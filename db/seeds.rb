@@ -6,4 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Manager.create(name: 'Usman Ghani', email: 'usman@shiftbuddy.com')
+10.times { create :manager }
