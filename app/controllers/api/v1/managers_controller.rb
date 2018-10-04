@@ -4,7 +4,6 @@ class Api::V1::ManagersController < ApplicationController
   # GET /managers
   def index
     @managers = Manager.all
-
     render json: @managers
   end
 
