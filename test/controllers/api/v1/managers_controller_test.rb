@@ -14,6 +14,7 @@ class ManagersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should show manager' do
     get "/api/v1/managers/#{manager.id}"
+    debugger
     assert_response :success
   end
 
@@ -22,7 +23,7 @@ private
   def manager_params
     {
       manager: {
-        name: Faker::Name.first_name,
+        name: 'john',
         email: Faker::Internet.email
       }
     }
