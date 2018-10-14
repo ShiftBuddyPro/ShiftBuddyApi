@@ -14,7 +14,11 @@ class ManagersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should show manager' do
     get "/api/v1/managers/#{manager.id}"
-    debugger
+    assert_response :success
+  end
+
+  test 'should update manager' do
+    put "/api/v1/managers/#{manager.id}", params: manager_params
     assert_response :success
   end
 

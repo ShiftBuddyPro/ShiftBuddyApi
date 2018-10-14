@@ -9,7 +9,7 @@ class Api::V1::ManagersController < ApplicationController
 
   # GET /managers/1
   def show
-    render json: @manager
+    render json: @manager, serializer: ManagerSerializer
   end
 
   # POST /managers
@@ -37,14 +37,15 @@ class Api::V1::ManagersController < ApplicationController
     @manager.destroy
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_manager
-      @manager = Manager.find(params[:id])
-    end
+private
 
-    # Only allow a trusted parameter "white list" through.
-    def manager_params
-      params.require(:manager).permit(:name, :email)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_manager
+    @manager = Manager.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def manager_params
+    params.require(:manager).permit(:name, :email)
+  end
 end

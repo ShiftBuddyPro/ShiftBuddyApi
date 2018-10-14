@@ -5,12 +5,12 @@ class Api::V1::EmployeesController < ApplicationController
   def index
     @employees = Employee.all
 
-    render json: @employees
+    render json: @employees, each_serializer: ManagerSerializer
   end
 
   # GET /employees/1
   def show
-    render json: @employee
+    render json: @employee, serializer: ManagerSerializer
   end
 
   # POST /employees
