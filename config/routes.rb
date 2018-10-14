@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :shifts
   resources :employees
   namespace :api do
     namespace :v1 do
