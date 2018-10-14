@@ -15,6 +15,11 @@ class Api::V1::ShiftsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'should show all shifts' do
+    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts"
+    assert_response :success
+  end
+
   test 'should show shift' do
     get "/api/v1/shifts/#{shift.id}"
     assert_response :success
