@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :checks
   resources :notes
   resources :shifts
   resources :employees

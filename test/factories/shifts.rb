@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :shift do
-    employee { nil }
+    employee
   end
 end

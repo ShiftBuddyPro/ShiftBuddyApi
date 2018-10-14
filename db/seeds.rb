@@ -7,4 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 10.times { FactoryBot.create :manager }
-10.times { FactoryBot.create :employee}
+10.times { FactoryBot.create :employee }
+10.times { FactoryBot.create :shift }
+10.times { FactoryBot.create :note }
