@@ -1,4 +1,4 @@
-class ShiftsController < ApplicationController
+class Api::V1::ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :update, :destroy]
 
   # GET /shifts
@@ -18,9 +18,11 @@ class ShiftsController < ApplicationController
     @shift = Shift.new(shift_params)
 
     if @shift.save
-      render json: @shift, status: :created, location: @shift
+      render json: @shift,
+             status: :created
     else
-      render json: @shift.errors, status: :unprocessable_entity
+      render json: @shift.errors,
+             status: :unprocessable_entity
     end
   end
 
