@@ -10,3 +10,4 @@
 10.times { FactoryBot.create :employee }
 10.times { FactoryBot.create :shift }
 10.times { FactoryBot.create :note }
+10.times { FactoryBot.create :check }

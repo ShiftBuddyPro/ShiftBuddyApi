@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :check do
-    number { 1 }
-    company { "MyString" }
-    amount { 1.5 }
-    shift { nil }
+    number { Faker::Number.number(4) }
+    company { Faker::Company.name }
+    amount { Faker::Commerce.price }
+
+    shift
   end
 end
