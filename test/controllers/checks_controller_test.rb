@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ChecksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @check = checks(:one)
+    @check = create :check
   end
 
   test "should get index" do

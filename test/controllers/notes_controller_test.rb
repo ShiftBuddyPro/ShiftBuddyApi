@@ -2,7 +2,7 @@ require 'test_helper'
 
 class NotesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @note = notes(:one)
+    @note = create :note
   end
 
   test "should get index" do

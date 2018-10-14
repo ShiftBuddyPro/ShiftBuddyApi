@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ShiftsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @shift = shifts(:one)
+    @shift = create :shift
   end
 
   test "should get index" do

@@ -1,7 +1,8 @@
 require 'test_helper'
 
-class ManagersControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::ManagersControllerTest < ActionDispatch::IntegrationTest
   attr_reader :manager
+
   setup do
     @manager = create :manager
   end
@@ -19,6 +20,13 @@ class ManagersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update manager' do
     put "/api/v1/managers/#{manager.id}", params: manager_params
+    assert_response :success
+  end
+
+  test 'should delete manager' do
+    assert_difference 'Manager.count', -1 do
+      delete "/api/v1/managers/#{manager.id}"
+    end
     assert_response :success
   end
 
