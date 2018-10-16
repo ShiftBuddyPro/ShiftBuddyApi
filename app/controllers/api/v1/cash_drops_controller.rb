@@ -1,4 +1,4 @@
-class CashDropsController < ApplicationController
+class Api::V1::CashDropsController < ApplicationController
   before_action :set_cash_drop, only: [:show, :update, :destroy]
 
   # GET /cash_drops
@@ -18,7 +18,7 @@ class CashDropsController < ApplicationController
     @cash_drop = CashDrop.new(cash_drop_params)
 
     if @cash_drop.save
-      render json: @cash_drop, status: :created, location: @cash_drop
+      render json: @cash_drop, status: :created
     else
       render json: @cash_drop.errors, status: :unprocessable_entity
     end

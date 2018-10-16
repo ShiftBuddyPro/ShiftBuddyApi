@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :cash_drops
   namespace :api do
     namespace :v1 do
       resources :managers do
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
           resources :shifts, shallow: true do
             resources :checks
             resources :notes
+            resources :cash_drops
           end
         end
       end
