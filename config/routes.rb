@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-
-  resources :notes
   namespace :api do
     namespace :v1 do
       resources :managers do
         resources :employees do
           resources :shifts, shallow: true do
             resources :checks
+            resources :notes
           end
         end
       end
