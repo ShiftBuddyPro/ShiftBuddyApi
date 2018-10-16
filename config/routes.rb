@@ -7,6 +7,7 @@ Rails.application.routes.draw do
             resources :checks
             resources :notes
             resources :cash_drops
+            resources :paid_outs
           end
         end
       end
