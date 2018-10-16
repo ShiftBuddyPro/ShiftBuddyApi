@@ -1,4 +1,5 @@
 class Api::V1::ShiftsController < ApplicationController
+  attr_accessor :shift
   before_action :set_shift, only: [:show, :update, :destroy]
 
   # GET /shifts
@@ -40,14 +41,13 @@ class Api::V1::ShiftsController < ApplicationController
     @shift.destroy
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_shift
-      @shift = Shift.find(params[:id])
-    end
+private
 
-    # Only allow a trusted parameter "white list" through.
-    def shift_params
-      params.require(:shift).permit(:employee_id)
-    end
+  def set_shift
+    @shift = Shift.find(params[:id])
+  end
+
+  def shift_params
+    params.require(:shift).permit(:employee_id)
+  end
 end
