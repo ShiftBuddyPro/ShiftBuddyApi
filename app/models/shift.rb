@@ -3,4 +3,5 @@ class Shift < ApplicationRecord
 
   has_many :notes
   has_many :checks
+  has_many :cash_drops
 end

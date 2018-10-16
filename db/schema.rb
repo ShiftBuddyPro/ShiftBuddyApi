@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181014224621) do
+ActiveRecord::Schema.define(version: 20181016172750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cash_drops", force: :cascade do |t|
+    t.float "amount"
+    t.integer "number"
+    t.bigint "shift_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shift_id"], name: "index_cash_drops_on_shift_id"
+  end
 
   create_table "checks", force: :cascade do |t|
     t.integer "number"
@@ -56,6 +65,7 @@ ActiveRecord::Schema.define(version: 20181014224621) do
     t.index ["employee_id"], name: "index_shifts_on_employee_id"
   end
 
+  add_foreign_key "cash_drops", "shifts"
   add_foreign_key "checks", "shifts"
   add_foreign_key "employees", "managers"
   add_foreign_key "notes", "shifts"
