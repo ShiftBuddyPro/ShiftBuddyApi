@@ -28,7 +28,7 @@ export class Shifts extends Component {
 export class Checks extends Component {
   render() {
     return (
-      <IndexTable resource={"checks"} attributes ={["id", "shift_id"]}/>
+      <IndexTable resource={"checks"} attributes ={["id", "shift_id", "number", "company", "amount", "created_at"]}/>
     )
   }
 }
@@ -52,7 +52,7 @@ export class CashDrops extends Component {
 export class PaidOuts extends Component {
   render() {
     return (
-      <IndexTable resource={"paid_outs"} attributes ={["id", "shift_id"]}/>
+      <IndexTable resource={"paid_outs"} attributes ={["id", "shift_id", "company", "amount"]}/>
     )
   }
 }
@@ -60,7 +60,7 @@ export class PaidOuts extends Component {
 export class InventoryItems extends Component {
   render() {
     return (
-      <IndexTable resource={"inventory_items"} attributes ={["id", "shift_id"]}/>
+      <IndexTable resource={"inventory_items"} attributes ={["id", "shift_id", "name", "start_amount", "end_amount"]}/>
     )
   }
 }
@@ -68,7 +68,7 @@ export class InventoryItems extends Component {
 export class Notes extends Component {
   render() {
     return (
-      <IndexTable resource={"notes"} attributes ={["id", "shift_id"]}/>
+      <IndexTable resource={"notes"} attributes ={["id", "shift_id", "title", "message"]}/>
     )
   }
 }

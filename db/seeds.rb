@@ -6,9 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times { FactoryBot.create :manager }
-10.times { FactoryBot.create :employee }
-10.times { FactoryBot.create :shift }
-10.times { FactoryBot.create :note }
-10.times { FactoryBot.create :check }
-10.times { FactoryBot.create :cash_drop }
+resources = %i[
+  manager
+  employee
+  shift
+  cash_drop
+  check
+  note
+  paid_out
+  inventory_item
+]
+
+resources.each do |resource|
+  10.times { FactoryBot.create resource }
+end

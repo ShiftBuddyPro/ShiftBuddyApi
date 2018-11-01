@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181016185633) do
+ActiveRecord::Schema.define(version: 20181101170049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20181016185633) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["manager_id"], name: "index_employees_on_manager_id"
+  end
+
+  create_table "inventory_items", force: :cascade do |t|
+    t.string "name"
+    t.integer "start_amount"
+    t.integer "end_amount"
+    t.bigint "shift_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shift_id"], name: "index_inventory_items_on_shift_id"
   end
 
   create_table "managers", force: :cascade do |t|
@@ -77,6 +87,7 @@ ActiveRecord::Schema.define(version: 20181016185633) do
   add_foreign_key "cash_drops", "shifts"
   add_foreign_key "checks", "shifts"
   add_foreign_key "employees", "managers"
+  add_foreign_key "inventory_items", "shifts"
   add_foreign_key "notes", "shifts"
   add_foreign_key "paid_outs", "shifts"
   add_foreign_key "shifts", "employees"
