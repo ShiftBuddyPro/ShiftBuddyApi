@@ -11,4 +11,4 @@
 10.times { FactoryBot.create :shift }
 10.times { FactoryBot.create :note }
 10.times { FactoryBot.create :check }
-10.times { FactoryBot.create :cash_drop}
+10.times { FactoryBot.create :cash_drop }

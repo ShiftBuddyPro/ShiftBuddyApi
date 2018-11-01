@@ -19,6 +19,7 @@ export class ManagersNew extends Component {
     axios.post("http://localhost:8000/api/v1/managers", { name, email })
     .then(result => {
       console.log(result);
+      window.location.reload();
     })
     .catch(err => {
       console.log(err);
