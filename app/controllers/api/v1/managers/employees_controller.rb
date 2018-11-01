@@ -1,10 +1,10 @@
-class Api::V1::EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :update, :destroy]
-  attr_accessor :employee
+class Api::V1::Managers::EmployeesController < ApplicationController
+  attr_accessor :manager_id
 
   # GET /employees
   def index
-    render json: Employee.all,
+    employees = Manager.find(params[:manager_id]).employees
+    render json: employees.all,
            each_serializer: EmployeeSerializer
   end
 

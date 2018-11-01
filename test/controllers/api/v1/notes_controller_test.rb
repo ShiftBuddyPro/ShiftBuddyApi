@@ -10,12 +10,6 @@ class Api::V1::NotesControllerTest < ActionDispatch::IntegrationTest
     @note = create :note, shift: shift
   end
 
-  test 'should create note' do
-    assert_changes 'Note.count' do
-      post "/api/v1/shifts/#{shift.id}/notes", params: note_params
-    end
-  end
-
   test 'should show all notes' do
     get "/api/v1/shifts/#{shift.id}/notes"
     assert_response :success
