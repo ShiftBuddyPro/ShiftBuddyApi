@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   post 'api/v1/managers/authenticate', to: 'api/v1/managers/authentication#authenticate'
+  post 'api/v1/managers/employees/authenticate', to: 'api/v1/managers/employees/authentication#authenticate'
 
   namespace :api do
     namespace :v1 do
