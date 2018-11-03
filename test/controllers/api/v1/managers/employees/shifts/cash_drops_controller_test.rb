@@ -8,6 +8,7 @@ class Api::V1::Managers::Employees::Shifts::CashDropsControllerTest < ActionDisp
     @employee = create :employee, manager: manager
     @shift = create :shift, employee: employee
     @cash_drop = create :cash_drop, shift: shift
+    sign_in employee
   end
 
   test 'should get shifts cash drops' do

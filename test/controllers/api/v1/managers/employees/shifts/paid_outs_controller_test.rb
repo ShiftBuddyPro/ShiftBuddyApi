@@ -8,6 +8,8 @@ class Api::V1::Managers::Employees::Shifts::PaidOutsControllerTest < ActionDispa
     @employee = create :employee, manager: manager
     @shift = create :shift, employee: employee
     @paid_out = create :paid_out, shift: shift
+    sign_in employee
+
   end
 
   test 'should get shifts paid outs' do

@@ -1,11 +1,12 @@
 require 'test_helper'
 
 class Api::V1::Managers::EmployeesControllerTest < ActionDispatch::IntegrationTest
-  attr_accessor :manager, :employee
+  attr_accessor :manager, :employee, :token
 
   setup do
-    @manager = create :manager
+    @manager = create :manager, name: 'real one'
     @employee = create :employee, manager: manager
+    sign_in manager
   end
 
   test 'should create new employee for specified manager' do
@@ -32,9 +33,13 @@ class Api::V1::Managers::EmployeesControllerTest < ActionDispatch::IntegrationTe
 private
 
   def employee_params
+    password = Faker::Internet.password
     {
       employee: {
-        name: 'Usman Ghani',
+        name: Faker::Name.first_name,
+        username: Faker::Internet.username,
+        password: password,
+        password_confirmation: password,
         manager_id: manager.id
       }
     }

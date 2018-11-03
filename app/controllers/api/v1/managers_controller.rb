@@ -17,9 +17,11 @@ class Api::V1::ManagersController < ApplicationController
     @manager = Manager.new(manager_params)
 
     if @manager.save
-      render json: @manager, status: :created, location: api_v1_manager_url(@manager)
+      render json: @manager,
+             status: :created
     else
-      render json: @manager.errors, status: :unprocessable_entity
+      render json: @manager.errors,
+             status: :unprocessable_entity
     end
   end
 
@@ -46,6 +48,6 @@ private
 
   # Only allow a trusted parameter "white list" through.
   def manager_params
-    params.require(:manager).permit(:name, :email)
+    params.require(:manager).permit(:name, :email, :password, :password_confirmation)
   end
 end

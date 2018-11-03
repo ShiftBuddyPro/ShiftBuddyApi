@@ -8,6 +8,8 @@ class Api::V1::Managers::Employees::Shifts::InventoryItemsControllerTest < Actio
     @employee = create :employee, manager: manager
     @shift = create :shift, employee: employee
     @inventory_item = create :inventory_item, shift: shift
+    sign_in employee
+
   end
 
   test 'should get shifts Inventory items' do

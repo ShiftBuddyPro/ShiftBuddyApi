@@ -7,6 +7,7 @@ class Api::V1::Managers::Employees::ShiftsControllerTest < ActionDispatch::Integ
     @manager = create :manager
     @employee = create :employee, manager: manager
     @shift = create :shift, employee: employee
+    sign_in employee
   end
 
   test 'should create shift' do
