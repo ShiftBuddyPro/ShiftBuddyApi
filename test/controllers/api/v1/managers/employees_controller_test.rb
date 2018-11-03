@@ -8,14 +8,33 @@ class Api::V1::Managers::EmployeesControllerTest < ActionDispatch::IntegrationTe
     @employee = create :employee, manager: manager
   end
 
-  test "should get create" do
-    get api_v1_managers_employees_create_url
+  test 'should create new employee for specified manager' do
+    post "/api/v1/managers/#{manager.id}/employees", params: employee_params
     assert_response :success
   end
 
   test 'should get specific managers employees' do
-    get "api/v1/managers/#{manager.id}/employees"
+    get "/api/v1/managers/#{manager.id}/employees"
     assert_response :success
-    debugger
+    assert_json(@response.body) do
+      item 0 do
+        has :id, employee.id
+        has :name, employee.name
+        has :manager_id, manager.id
+        has :created_at
+        has :updated_atcp
+      end
+    end
+  end
+
+private
+
+  def employee_params
+    {
+      employee: {
+        name: 'Usman Ghani',
+        manager_id: manager.id
+      }
+    }
   end
 end

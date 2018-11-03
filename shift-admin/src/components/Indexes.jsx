@@ -44,7 +44,7 @@ export class Change extends Component {
 export class CashDrops extends Component {
   render() {
     return (
-      <IndexTable resource={"cash_drops"} attributes ={["id", "shift_id"]}/>
+      <IndexTable resource={"cash_drops"} attributes ={["id", "shift_id", "amount", "number"]}/>
     )
   }
 }

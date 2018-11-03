@@ -2,13 +2,15 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :managers, shallow: true do
-        resources :employees do
-          resources :shifts do
-            resources :checks
-            resources :notes
-            resources :cash_drops
-            resources :paid_outs
-            resources :inventory_items
+        scope module: :managers do
+          resources :employees do
+            resources :shifts do
+              resources :checks
+              resources :notes
+              resources :cash_drops
+              resources :paid_outs
+              resources :inventory_items
+            end
           end
         end
       end

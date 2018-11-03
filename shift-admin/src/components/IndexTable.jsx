@@ -24,19 +24,19 @@ export class IndexTable extends Component {
 
   render() {
     return (
-      <div>
-        <h1 className="index-header" >{this.props.resource} <Button href={"/" + this.props.resource + "new"} color="success">+</Button></h1>
+      <div className="table-page">
+      <h1 className="index-header" >{this.props.resource} <Button href={"/" + this.props.resource + "new"} color="success">+</Button></h1>
         <Table>
-        <thead>
-          <tr>
-            {this.props.attributes.map(attribute => {
-              return(
-                <td key={attribute + 'attribute1'}>{attribute}</td>
-              )
-            })
-            }
-          </tr>
-        </thead>
+          <thead>
+            <tr>
+              {this.props.attributes.map(attribute => {
+                return(
+                  <td key={attribute + 'attribute1'}>{attribute}</td>
+                )
+              })
+              }
+            </tr>
+          </thead>
         <tbody>
           {this.state.resource.map(resource => {
             return(
