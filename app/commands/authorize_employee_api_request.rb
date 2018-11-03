@@ -14,7 +14,7 @@ class AuthorizeEmployeeApiRequest
   attr_reader :headers
 
   def employee
-    @employee ||= Employee.find(decoded_auth_token[:employee_id]) if decoded_auth_token
+    @employee ||= Employee.find(decoded_auth_token[:employee_id]) if decoded_auth_token[:employee_id]
     @employee || errors.add(:token, 'Invalid token') && nil
   end
 

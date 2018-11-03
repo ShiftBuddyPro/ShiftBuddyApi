@@ -1,4 +1,4 @@
-class Api::V1::Managers::Employees::Shifts::InventoryItemsController < ApplicationController
+class Api::V1::Managers::Employees::Shifts::InventoryItemsController < Api::EmployeeApplicationController
   def index
     inventory_items = Shift.find(params[:shift_id]).inventory_items
     render json: inventory_items.all

@@ -1,4 +1,4 @@
-class Api::V1::Managers::Employees::Shifts::NotesController < ApplicationController
+class Api::V1::Managers::Employees::Shifts::NotesController < Api::EmployeeApplicationController
   def index
     notes = Shift.find(params[:shift_id]).notes
     render json: notes.all

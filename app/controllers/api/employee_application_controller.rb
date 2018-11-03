@@ -6,6 +6,7 @@ class Api::EmployeeApplicationController < ApplicationController
 
   def authenticate_request
     @current_employee = AuthorizeEmployeeApiRequest.call(request.headers).result
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_employee
+    @current_manager = AuthorizeManagerApiRequest.call(request.headers).result unless @current_employee
+    render json: { error: 'Not Authorized' }, status: 401 unless @current_employee || @current_manager
   end
 end

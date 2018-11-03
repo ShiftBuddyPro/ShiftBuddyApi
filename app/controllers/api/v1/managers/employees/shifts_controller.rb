@@ -1,4 +1,4 @@
-class Api::V1::Managers::Employees::ShiftsController < ApplicationController
+class Api::V1::Managers::Employees::ShiftsController < Api::EmployeeApplicationController
   attr_accessor :employee_id
 
   # GET /shifts
