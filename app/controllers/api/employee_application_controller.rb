@@ -12,12 +12,12 @@ class Api::EmployeeApplicationController < ApplicationController
   end
 
   def authorize!(user)
-    if user.class == Manager
-      return if current_manager.id == user.id
-    elsif user.class == Employee
-      return if current_employee.id == user.id
+    if user.class == Manager && current_manager
+      return user if current_manager.id == user.id
+    elsif user.class == Employee && current_employee
+      return user if current_employee.id == user.id
     else
-      render status: 401 and return
+      false
     end
   end
 end

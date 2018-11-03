@@ -17,9 +17,9 @@ class ActionDispatch::IntegrationTest
 
   def sign_in(user)
     if user.class == Manager
-      token = JsonWebToken.encode(manager_id: manager.id)
+      token = JsonWebToken.encode(manager_id: user.id)
     elsif user.class == Employee
-      token = JsonWebToken.encode(employee_id: employee.id)
+      token = JsonWebToken.encode(employee_id: user.id)
     end
     return if token.nil?
 

@@ -4,9 +4,9 @@ class Api::V1::Managers::EmployeesControllerTest < ActionDispatch::IntegrationTe
   attr_accessor :manager, :employee, :token
 
   setup do
-    @manager = create :manager
+    @manager = create :manager, name: 'real one'
     @employee = create :employee, manager: manager
-    sign_in @manager
+    sign_in manager
   end
 
   test 'should create new employee for specified manager' do
