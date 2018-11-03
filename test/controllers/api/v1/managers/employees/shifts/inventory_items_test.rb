@@ -16,9 +16,9 @@ class Api::V1::Managers::Employees::Shifts::InventoryItemsControllerTest < Actio
     assert_json(@response.body) do
       item 0 do
         has :id, inventory_item.id
-        has :amount, inventory_item.amount
-        has :number, inventory_item.number
-        has :company, inventory_item.company
+        has :start_amount, inventory_item.start_amount
+        has :end_amount, inventory_item.end_amount
+        has :name, inventory_item.name
         has :shift_id, shift.id
         has :created_at
         has :updated_at
