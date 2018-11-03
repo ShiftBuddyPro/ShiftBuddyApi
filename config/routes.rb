@@ -18,7 +18,7 @@ Rails.application.routes.draw do
                   resources :checks, only: %i[index create]
                   resources :inventory_items, only: %i[index create]
                   resources :notes, only: %i[index create]
-                  resources :paid_out, only: %i[index create]
+                  resources :paid_outs, only: %i[index create]
                 end
               end
             end

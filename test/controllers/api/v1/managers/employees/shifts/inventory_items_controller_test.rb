@@ -10,7 +10,7 @@ class Api::V1::Managers::Employees::Shifts::InventoryItemsControllerTest < Actio
     @inventory_item = create :inventory_item, shift: shift
   end
 
-  test 'should get shifts cash drops' do
+  test 'should get shifts Inventory items' do
     get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/inventory_items"
     assert_response :success
     assert_json(@response.body) do
@@ -26,7 +26,7 @@ class Api::V1::Managers::Employees::Shifts::InventoryItemsControllerTest < Actio
     end
   end
 
-  test 'should create cash drop' do
+  test 'should create inventory item' do
     assert_difference 'InventoryItem.count' do
       post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/inventory_items", params: inventory_item_params
     end

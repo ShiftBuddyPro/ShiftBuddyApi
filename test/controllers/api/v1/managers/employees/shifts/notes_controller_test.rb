@@ -16,9 +16,8 @@ class Api::V1::Managers::Employees::Shifts::NotesControllerTest < ActionDispatch
     assert_json(@response.body) do
       item 0 do
         has :id, note.id
-        has :start_amount, note.start_amount
-        has :end_amount, note.end_amount
-        has :name, note.name
+        has :title, note.title
+        has :message, note.message
         has :shift_id, shift.id
         has :created_at
         has :updated_at
@@ -38,9 +37,8 @@ private
   def note_params
     {
       note: {
-        name: Faker::Beer.name,
-        start_amount: Faker::Number.number(2),
-        end_amount: Faker::Number.number(2),
+        title: Faker::GreekPhilosophers.name,
+        message: Faker::GreekPhilosophers.quote,
         shift_id: shift.id
       }
     }

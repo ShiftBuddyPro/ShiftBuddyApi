@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::V1::Managers::Employees::Shifts::InventoryItemsControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::Managers::Employees::Shifts::PaidOutsControllerTest < ActionDispatch::IntegrationTest
   attr_reader :manager, :employee, :shift, :paid_out
 
   setup do
@@ -14,6 +14,7 @@ class Api::V1::Managers::Employees::Shifts::InventoryItemsControllerTest < Actio
     get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/paid_outs"
     assert_response :success
     assert_json(@response.body) do
+      has_only
       item 0 do
         has :id, paid_out.id
         has :amount, paid_out.amount
@@ -26,7 +27,7 @@ class Api::V1::Managers::Employees::Shifts::InventoryItemsControllerTest < Actio
   end
 
   test 'should create paid out' do
-    assert_difference 'InventoryItem.count' do
+    assert_difference 'PaidOut.count' do
       post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/paid_outs", params: paid_out_params
     end
     assert_response :success
