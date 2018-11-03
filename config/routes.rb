@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :cash_drops, except: %i[create]
       resources :paid_outs, except: %i[create]
       resources :inventory_items, except: %i[create]
-      resources :managers, shallow: true do
+      resources :managers do
         scope module: :managers do
           resources :employees, only: %i[index create] do
             scope module: :employees do
