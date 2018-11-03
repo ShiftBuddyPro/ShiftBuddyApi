@@ -15,7 +15,6 @@ class Api::V1::Managers::AuthenticationControllerTest < ActionDispatch::Integrat
     end
   end
 
-
 private
 
   def authentication_params
