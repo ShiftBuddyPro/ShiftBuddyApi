@@ -1,24 +1,23 @@
 require 'test_helper'
 
 class Api::V1::Managers::Employees::Shifts::InventoryItemsControllerTest < ActionDispatch::IntegrationTest
-  attr_reader :manager, :employee, :shift, :inventory_item
+  attr_reader :manager, :employee, :shift, :paid_out
 
   setup do
     @manager = create :manager
     @employee = create :employee, manager: manager
     @shift = create :shift, employee: employee
-    @inventory_item = create :inventory_item, shift: shift
+    @paid_out = create :paid_out, shift: shift
   end
 
-  test 'should get shifts cash drops' do
-    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/inventory_items"
+  test 'should get shifts paid outs' do
+    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/paid_outs"
     assert_response :success
     assert_json(@response.body) do
       item 0 do
-        has :id, inventory_item.id
-        has :start_amount, inventory_item.start_amount
-        has :end_amount, inventory_item.end_amount
-        has :name, inventory_item.name
+        has :id, paid_out.id
+        has :amount, paid_out.amount
+        has :company, paid_out.company
         has :shift_id, shift.id
         has :created_at
         has :updated_at
@@ -26,21 +25,20 @@ class Api::V1::Managers::Employees::Shifts::InventoryItemsControllerTest < Actio
     end
   end
 
-  test 'should create cash drop' do
+  test 'should create paid out' do
     assert_difference 'InventoryItem.count' do
-      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/inventory_items", params: inventory_item_params
+      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/paid_outs", params: paid_out_params
     end
     assert_response :success
   end
 
 private
 
-  def inventory_item_params
+  def paid_out_params
     {
-      inventory_item: {
-        name: Faker::Beer.name,
-        start_amount: Faker::Number.number(2),
-        end_amount: Faker::Number.number(2),
+      paid_out: {
+        company: Faker::Company.name,
+        amount: Faker::Number.number(2),
         shift_id: shift.id
       }
     }
