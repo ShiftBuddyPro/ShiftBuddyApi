@@ -6,7 +6,6 @@ Rails.application.routes.draw do
       resources :cash_drops, except: %i[create]
       resources :checks, except: %i[create]
       resources :notes, except: %i[create]
-      resources :cash_drops, except: %i[create]
       resources :paid_outs, except: %i[create]
       resources :inventory_items, except: %i[create]
       resources :managers do
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
               resources :shifts, only: %i[index create] do
                 scope module: :shifts do
                   resources :cash_drops, only: %i[index create]
+                  resources :checks, only: %i[index create]
                 end
               end
             end
