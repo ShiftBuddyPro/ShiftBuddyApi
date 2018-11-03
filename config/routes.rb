@@ -11,9 +11,9 @@ Rails.application.routes.draw do
       resources :inventory_items, except: %i[create]
       resources :managers, shallow: true do
         scope module: :managers do
-          resources :employees do
+          resources :employees, only: %i[index create] do
             scope module: :employees do
-              resources :shifts do
+              resources :shifts, only: %i[index create] do
               end
             end
           end
