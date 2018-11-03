@@ -16,8 +16,9 @@ class Api::V1::Managers::Employees::Shifts::ChecksControllerTest < ActionDispatc
     assert_json(@response.body) do
       item 0 do
         has :id, check.id
-        has :amount, check.company
+        has :amount, check.amount
         has :number, check.number
+        has :company, check.company
         has :shift_id, shift.id
         has :created_at
         has :updated_at
@@ -37,8 +38,9 @@ private
   def check_params
     {
       check: {
-        amount: Faker::Number.number(3),
+        amount: Faker::Commerce.price,
         number: Faker::Number.number(4),
+        company: Faker::Company.name,
         shift_id: shift.id
       }
     }
