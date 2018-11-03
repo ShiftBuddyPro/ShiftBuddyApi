@@ -15,8 +15,6 @@ class Api::EmployeeApplicationController < ApplicationController
     record_matches_current_manager(record) || record_matches_current_employee(record)
   end
 
-private
-
   def record_matches_current_manager(record)
     record.class == Manager && current_manager && current_manager.id == record.id
   end
