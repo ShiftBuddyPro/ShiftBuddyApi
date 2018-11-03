@@ -17,6 +17,7 @@ Rails.application.routes.draw do
                   resources :cash_drops, only: %i[index create]
                   resources :checks, only: %i[index create]
                   resources :inventory_items, only: %i[index create]
+                  resources :notes, only: %i[index create]
                 end
               end
             end
