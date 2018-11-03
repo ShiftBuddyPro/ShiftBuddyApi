@@ -12,7 +12,6 @@ class Api::V1::Managers::Employees::ShiftsController < Api::EmployeeApplicationC
              status: :unauthorized
 
     end
-
   end
 
   # POST /shifts
@@ -25,8 +24,4 @@ class Api::V1::Managers::Employees::ShiftsController < Api::EmployeeApplicationC
       render json: @shift.errors, status: :unprocessable_entity
     end
   end
-
-private
-
- 
 end

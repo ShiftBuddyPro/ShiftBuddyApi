@@ -1,7 +1,6 @@
 class Api::V1::ManagersController < ApplicationController
   before_action :set_manager, only: [:show, :update, :destroy]
-  before_action :authenticate_request
-  attr_reader :current_manager
+
   # GET /managers
   def index
     @managers = Manager.all
@@ -48,10 +47,5 @@ private
   # Only allow a trusted parameter "white list" through.
   def manager_params
     params.require(:manager).permit(:name, :email)
-  end
-
-  def authenticate_request
-    @current_manager = AuthorizeManagerApiRequest.call(request.headers).result
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_manager
   end
 end
