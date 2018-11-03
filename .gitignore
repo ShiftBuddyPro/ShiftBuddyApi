@@ -14,3 +14,27 @@
 !/tmp/.keep
 
 .byebug_history
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+shift-admin/node_modules
+shift-admin/.pnp
+shift-admin.pnp.js
+
+# testing
+shift-admin/coverage
+
+# production
+shift-admin/build
+
+# misc
+shift-admin/.DS_Store
+shift-admin/.env.local
+shift-admin/.env.development.local
+shift-admin/.env.test.local
+shift-admin/.env.production.local
+
+shift-admin/npm-debug.log*
+shift-admin/yarn-debug.log*
+shift-admin/yarn-error.log*
