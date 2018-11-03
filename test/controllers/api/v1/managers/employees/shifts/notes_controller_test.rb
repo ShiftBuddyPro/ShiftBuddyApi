@@ -8,6 +8,8 @@ class Api::V1::Managers::Employees::Shifts::NotesControllerTest < ActionDispatch
     @employee = create :employee, manager: manager
     @shift = create :shift, employee: employee
     @note = create :note, shift: shift
+    sign_in employee
+
   end
 
   test 'should get shifts notes' do

@@ -33,10 +33,13 @@ class Api::V1::ManagersControllerTest < ActionDispatch::IntegrationTest
 private
 
   def manager_params
+    password = Faker::Internet.password
     {
       manager: {
-        name: 'john',
-        email: Faker::Internet.email
+        name: Faker::Name.first_name,
+        email: Faker::Internet.email,
+        password: password,
+        password_confirmation: password
       }
     }
   end

@@ -8,6 +8,8 @@ class Api::V1::Managers::Employees::Shifts::ChecksControllerTest < ActionDispatc
     @employee = create :employee, manager: manager
     @shift = create :shift, employee: employee
     @check = create :check, shift: shift
+    sign_in employee
+
   end
 
   test 'should get shifts cash drops' do
