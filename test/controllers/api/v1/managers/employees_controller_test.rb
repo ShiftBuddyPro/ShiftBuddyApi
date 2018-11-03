@@ -15,7 +15,7 @@ class Api::V1::Managers::EmployeesControllerTest < ActionDispatch::IntegrationTe
     end
     assert_response :success
   end
-  focus
+
   test 'should get specific managers employees' do
     get "/api/v1/managers/#{manager.id}/employees"
     assert_response :success
@@ -33,9 +33,13 @@ class Api::V1::Managers::EmployeesControllerTest < ActionDispatch::IntegrationTe
 private
 
   def employee_params
+    password = Faker::Internet.password
     {
       employee: {
-        name: 'Usman Ghani',
+        name: Faker::Name.first_name,
+        username: Faker::Internet.username,
+        password: password,
+        password_confirmation: password,
         manager_id: manager.id
       }
     }

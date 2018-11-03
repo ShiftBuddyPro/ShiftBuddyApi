@@ -1,17 +1,13 @@
 class Api::V1::Managers::EmployeesController < Api::EmployeeApplicationController
-  attr_accessor :manager
+  before_action -> { render_unauthorized && return unless current_user_is? manager }
 
   # GET /manager/employees
   # Available to manager only
   def index
     employees = manager.employees
-    if authorize! manager
-      render json: employees.all,
-             each_serializer: EmployeeSerializer,
-             status: 200
-    else
-      render json: { error: 'Unauthorized.' }
-    end
+    render json: employees.all,
+           each_serializer: EmployeeSerializer,
+           status: 200
   end
 
   # POST /manager/:manager_id/employees
@@ -29,7 +25,7 @@ class Api::V1::Managers::EmployeesController < Api::EmployeeApplicationControlle
 private
 
   def employee_params
-    params.require(:employee).permit(:name, :manager_id)
+    params.require(:employee).permit(:name, :manager_id, :username, :password, :password_confirmation)
   end
 
   def manager
