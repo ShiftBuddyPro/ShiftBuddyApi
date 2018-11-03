@@ -9,7 +9,9 @@ class Api::V1::Managers::EmployeesControllerTest < ActionDispatch::IntegrationTe
   end
 
   test 'should create new employee for specified manager' do
-    post "/api/v1/managers/#{manager.id}/employees", params: employee_params
+    assert_difference 'Employee.count' do
+      post "/api/v1/managers/#{manager.id}/employees", params: employee_params
+    end
     assert_response :success
   end
 

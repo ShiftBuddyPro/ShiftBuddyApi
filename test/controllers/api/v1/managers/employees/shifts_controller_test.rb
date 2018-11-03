@@ -9,8 +9,10 @@ class Api::V1::Managers::Employees::ShiftsControllerTest < ActionDispatch::Integ
     @shift = create :shift, employee: employee
   end
 
-  test 'should get create' do
-    post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts"
+  test 'should create shift' do
+    assert_difference 'Shift.count' do
+      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts"
+    end
     assert_response :success
   end
 
