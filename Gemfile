@@ -19,8 +19,9 @@ gem 'assert_json'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
+gem 'dotenv'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
