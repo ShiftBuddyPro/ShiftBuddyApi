@@ -1,11 +1,12 @@
 require 'test_helper'
 
 class Api::V1::Managers::EmployeesControllerTest < ActionDispatch::IntegrationTest
-  attr_accessor :manager, :employee
+  attr_accessor :manager, :employee, :token
 
   setup do
     @manager = create :manager
     @employee = create :employee, manager: manager
+    sign_in @manager
   end
 
   test 'should create new employee for specified manager' do
@@ -14,7 +15,7 @@ class Api::V1::Managers::EmployeesControllerTest < ActionDispatch::IntegrationTe
     end
     assert_response :success
   end
-
+  focus
   test 'should get specific managers employees' do
     get "/api/v1/managers/#{manager.id}/employees"
     assert_response :success

@@ -8,4 +8,4 @@ class Api::V1::Managers::Employees::AuthenticationController < ApplicationContro
       render json: { error: command.errors }, status: :unauthorized
     end
   end
- end
+end

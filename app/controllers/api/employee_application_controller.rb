@@ -11,8 +11,13 @@ class Api::EmployeeApplicationController < ApplicationController
     render json: { error: 'Not Authorized' }, status: 401 unless @current_employee || @current_manager
   end
 
-  def authorize!(employee_id)
-    (current_employee && current_employee.id == employee_id) ||
-      (current_manager && current_manager.employees.include?(Employee.find(employee_id)))
+  def authorize!(user)
+    if user.class == Manager
+      return if current_manager.id == user.id
+    elsif user.class == Employee
+      return if current_employee.id == user.id
+    else
+      render status: 401 and return
+    end
   end
 end
