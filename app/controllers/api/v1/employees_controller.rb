@@ -14,9 +14,6 @@ class Api::V1::EmployeesController < ApplicationController
            serializer: EmployeeSerializer
   end
 
-  # POST /employees
-
-
   # PATCH/PUT /employees/1
   def update
     if employee.update(employee_params)

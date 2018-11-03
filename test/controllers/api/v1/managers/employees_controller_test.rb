@@ -22,7 +22,7 @@ class Api::V1::Managers::EmployeesControllerTest < ActionDispatch::IntegrationTe
         has :name, employee.name
         has :manager_id, manager.id
         has :created_at
-        has :updated_atcp
+        has :updated_at
       end
     end
   end

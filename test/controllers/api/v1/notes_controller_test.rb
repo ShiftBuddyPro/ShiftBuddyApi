@@ -2,8 +2,6 @@ require 'test_helper'
 
 class Api::V1::NotesControllerTest < ActionDispatch::IntegrationTest
   attr_reader :note, :shift
-  delegate :employee, to: :shift
-  delegate :manager, to: :employee
 
   setup do
     @shift = create :shift
@@ -11,7 +9,7 @@ class Api::V1::NotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show all notes' do
-    get "/api/v1/shifts/#{shift.id}/notes"
+    get '/api/v1/notes'
     assert_response :success
   end
 

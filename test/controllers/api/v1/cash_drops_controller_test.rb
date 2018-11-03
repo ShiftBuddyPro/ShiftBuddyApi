@@ -2,22 +2,14 @@ require 'test_helper'
 
 class Api::V1::CashDropsControllerTest < ActionDispatch::IntegrationTest
   attr_reader :cash_drop, :shift
-  delegate :employee, to: :shift
-  delegate :manager, to: :employee
 
   setup do
     @shift = create :shift
     @cash_drop = create :cash_drop, shift: shift
   end
 
-  test 'should create cash_drop' do
-    assert_changes 'CashDrop.count' do
-      post "/api/v1/shifts/#{shift.id}/cash_drops", params: cash_drop_params
-    end
-  end
-
   test 'should show all cash_drops' do
-    get "/api/v1/shifts/#{shift.id}/cash_drops"
+    get '/api/v1/cash_drops'
     assert_response :success
   end
 

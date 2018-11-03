@@ -9,14 +9,8 @@ class Api::V1::ShiftsControllerTest < ActionDispatch::IntegrationTest
     @shift = create :shift, employee: employee
   end
 
-  test 'should create shift' do
-    assert_changes 'Shift.count' do
-      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts", params: shift_params
-    end
-  end
-
   test 'should show all shifts' do
-    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts"
+    get '/api/v1/shifts'
     assert_response :success
   end
 

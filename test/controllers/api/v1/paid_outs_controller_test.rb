@@ -2,22 +2,14 @@ require 'test_helper'
 
 class Api::V1::PaidOutsControllerTest < ActionDispatch::IntegrationTest
   attr_reader :paid_out, :shift
-  delegate :employee, to: :shift
-  delegate :manager, to: :employee
 
   setup do
     @shift = create :shift
     @paid_out = create :paid_out, shift: shift
   end
 
-  test 'should create paid_out' do
-    assert_changes 'PaidOut.count' do
-      post "/api/v1/shifts/#{shift.id}/paid_outs", params: paid_out_params
-    end
-  end
-
   test 'should show all paid_outs' do
-    get "/api/v1/shifts/#{shift.id}/paid_outs"
+    get '/api/v1/paid_outs'
     assert_response :success
   end
 

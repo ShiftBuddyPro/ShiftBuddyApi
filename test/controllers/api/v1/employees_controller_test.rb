@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::V1::EmployeesControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::EmployeeControllerTest < ActionDispatch::IntegrationTest
   attr_reader :employee, :manager
 
   setup do
@@ -8,25 +8,24 @@ class Api::V1::EmployeesControllerTest < ActionDispatch::IntegrationTest
     @employee = create :employee, manager: manager
   end
 
-  test 'should create employee' do
-    assert_changes 'Employee.count' do
-      post "/api/v1/managers/#{manager.id}/employees", params: employee_params
-    end
+  test 'should show all employees' do
+    get '/api/v1/employees/'
+    assert_response :success
   end
 
   test 'should show employee' do
-    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}"
+    get "/api/v1/employees/#{employee.id}"
     assert_response :success
   end
 
   test 'should update employee' do
-    put "/api/v1/managers/#{manager.id}/employees/#{employee.id}", params: employee_params
+    put "/api/v1/employees/#{employee.id}", params: employee_params
     assert_response :success
   end
 
   test 'should delete employee' do
     assert_difference 'Employee.count', -1 do
-      delete "/api/v1/managers/#{manager.id}/employees/#{employee.id}"
+      delete "/api/v1/employees/#{employee.id}"
     end
     assert_response :success
   end
@@ -36,8 +35,8 @@ private
   def employee_params
     {
       employee: {
-        name: 'john',
-        manager_id: create(:manager).id
+        name: Faker::Name.first_name,
+        manager_id: manager.id
       }
     }
   end
