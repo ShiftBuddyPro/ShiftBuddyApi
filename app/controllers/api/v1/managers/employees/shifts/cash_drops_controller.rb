@@ -1,4 +1,4 @@
-class Api::V1::Managers::Employees::Shifts::CashDropsController < ApplicationController
+class Api::V1::Managers::Employees::Shifts::CashDropsController < Api::EmployeeApplicationController
   def index
     cash_drops = Shift.find(params[:shift_id]).cash_drops
     render json: cash_drops.all

@@ -1,4 +1,4 @@
-class Api::V1::Managers::EmployeesController < ApplicationController
+class Api::V1::Managers::EmployeesController < Api::EmployeeApplicationController
   attr_accessor :manager_id
 
   # GET /employees
