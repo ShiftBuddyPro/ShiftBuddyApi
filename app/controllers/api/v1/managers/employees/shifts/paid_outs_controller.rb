@@ -1,6 +1,6 @@
 class Api::V1::Managers::Employees::Shifts::PaidOutsController < Api::EmployeeApplicationController
   def index
-    paid_outs = Shift.find(params[:shift_id]).paid_outs
+    paid_outs = Shift.find(shift_id).paid_outs
     render json: paid_outs.all
   end
 
@@ -16,6 +16,10 @@ class Api::V1::Managers::Employees::Shifts::PaidOutsController < Api::EmployeeAp
 private
 
   def paid_out_params
-    params.require(:paid_out).permit(:amount, :company, :name, :shift_id)
+    params.require(:paid_out).permit(:amount, :company, :name).merge(shift_id: shift_id)
+  end
+
+  def shift_id
+    @shift_id ||= params[:shift_id]
   end
 end

@@ -9,7 +9,7 @@ class Api::V1::ManagersController < ApplicationController
 
   # GET /managers/1
   def show
-    render json: @manager, serializer: ManagerSerializer
+    render json: @manager
   end
 
   # POST /managers

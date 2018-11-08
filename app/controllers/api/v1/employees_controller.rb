@@ -10,8 +10,7 @@ class Api::V1::EmployeesController < ApplicationController
 
   # GET /employees/1
   def show
-    render json: employee,
-           serializer: EmployeeSerializer
+    render json: EmployeeSerializer.new(employee).serialized_json
   end
 
   # PATCH/PUT /employees/1

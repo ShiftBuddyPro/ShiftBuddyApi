@@ -1,6 +1,6 @@
 class Api::V1::Managers::Employees::Shifts::NotesController < Api::EmployeeApplicationController
   def index
-    notes = Shift.find(params[:shift_id]).notes
+    notes = Shift.find(shift_id).notes
     render json: notes.all
   end
 
@@ -16,6 +16,10 @@ class Api::V1::Managers::Employees::Shifts::NotesController < Api::EmployeeAppli
 private
 
   def note_params
-    params.require(:note).permit(:title, :message, :shift_id)
+    params.require(:note).permit(:title, :message).merge(shift_id: shift_id)
+  end
+
+  def shift_id
+    @shift_id ||= params[:shift_id]
   end
 end

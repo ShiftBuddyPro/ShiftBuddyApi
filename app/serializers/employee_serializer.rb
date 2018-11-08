@@ -1,5 +1,4 @@
 class EmployeeSerializer < ApplicationSerializer
-  attribute :name
+  attributes :name, :id, :username, :manager_id
 
-  belongs_to :manager
 end
