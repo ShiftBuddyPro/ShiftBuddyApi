@@ -11,7 +11,9 @@ class Api::V1::ShiftsController < ApplicationController
 
   # GET /shifts/1
   def show
-    render json: @shift
+    options = {}
+    options[:include] = %i[paid_outs checks notes cash_drops inventory_items]
+    render json: ShiftSerializer.new(@shift, options).serialized_json, include: '**', status: 200
   end
 
   # POST /shifts
