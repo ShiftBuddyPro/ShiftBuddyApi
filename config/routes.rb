@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :paid_outs, except: %i[create]
       resources :managers do
         scope module: :managers do
+          resources :tracked_items, only: %i[index create destroy]
           resources :employees, only: %i[index create] do
             scope module: :employees do
               resources :shifts, only: %i[index create] do
