@@ -1,6 +1,6 @@
 class Api::V1::Managers::Employees::Shifts::CashDropsController < Api::EmployeeApplicationController
   def index
-    cash_drops = Shift.find(params[:shift_id]).cash_drops
+    cash_drops = Shift.find(shift_id).cash_drops
     render json: cash_drops.all
   end
 
@@ -16,6 +16,10 @@ class Api::V1::Managers::Employees::Shifts::CashDropsController < Api::EmployeeA
 private
 
   def cash_drop_params
-    params.require(:cash_drop).permit(:amount, :number, :shift_id)
+    params.require(:cash_drop).permit(:amount, :number).merge(shift_id: shift_id)
+  end
+
+  def shift_id
+    @shift_id ||= params[:shift_id]
   end
 end
