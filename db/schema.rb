@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181103071601) do
+ActiveRecord::Schema.define(version: 20181216193837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,28 @@ ActiveRecord::Schema.define(version: 20181103071601) do
     t.index ["shift_id"], name: "index_inventory_items_on_shift_id"
   end
 
+  create_table "inventory_lists", force: :cascade do |t|
+    t.string "item_name"
+    t.bigint "manager_configuration_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_configuration_id"], name: "index_inventory_lists_on_manager_configuration_id"
+  end
+
+  create_table "manager_configurations", force: :cascade do |t|
+    t.bigint "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_id"], name: "index_manager_configurations_on_manager_id"
+  end
+
+  create_table "manager_settings", force: :cascade do |t|
+    t.bigint "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_id"], name: "index_manager_settings_on_manager_id"
+  end
+
   create_table "managers", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -87,11 +109,23 @@ ActiveRecord::Schema.define(version: 20181103071601) do
     t.index ["employee_id"], name: "index_shifts_on_employee_id"
   end
 
+  create_table "tracked_items", force: :cascade do |t|
+    t.string "name"
+    t.bigint "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_id"], name: "index_tracked_items_on_manager_id"
+  end
+
   add_foreign_key "cash_drops", "shifts"
   add_foreign_key "checks", "shifts"
   add_foreign_key "employees", "managers"
   add_foreign_key "inventory_items", "shifts"
+  add_foreign_key "inventory_lists", "manager_configurations"
+  add_foreign_key "manager_configurations", "managers"
+  add_foreign_key "manager_settings", "managers"
   add_foreign_key "notes", "shifts"
   add_foreign_key "paid_outs", "shifts"
   add_foreign_key "shifts", "employees"
+  add_foreign_key "tracked_items", "managers"
 end
