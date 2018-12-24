@@ -18,7 +18,7 @@ class Api::V1::InventoryItemsController < ApplicationController
     @inventory_item = InventoryItem.new(inventory_item_params)
 
     if @inventory_item.save
-      render json: @inventory_item, status: :created, location: @inventory_item
+      render json: @inventory_item, status: :created
     else
       render json: @inventory_item.errors, status: :unprocessable_entity
     end
