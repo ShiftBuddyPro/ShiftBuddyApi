@@ -13,7 +13,7 @@ class Api::V1::Managers::TrackedItemsController < ApplicationController
     @tracked_item = TrackedItem.new(tracked_item_params)
 
     if @tracked_item.save
-      render json: @tracked_item, status: :created, location: @tracked_item
+      render json: @tracked_item, status: :created
     else
       render json: @tracked_item.errors, status: :unprocessable_entity
     end
