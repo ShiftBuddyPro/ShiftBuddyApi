@@ -8,6 +8,7 @@ class Shift < ApplicationRecord
   has_many :cash_drops
   has_many :paid_outs
   has_many :inventory_items
+  has_one :change_sheet
 
   def set_inventory_items
     employee.manager.tracked_items.each do |item|
