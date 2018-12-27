@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181216193837) do
+ActiveRecord::Schema.define(version: 20181227053939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,29 @@ ActiveRecord::Schema.define(version: 20181216193837) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shift_id"], name: "index_cash_drops_on_shift_id"
+  end
+
+  create_table "change_sheets", force: :cascade do |t|
+    t.bigint "shift_id"
+    t.integer "start_pennies"
+    t.integer "start_nickels"
+    t.integer "start_dimes"
+    t.integer "start_quarters"
+    t.integer "start_ones"
+    t.integer "start_fives"
+    t.integer "start_tens"
+    t.integer "start_twenties"
+    t.integer "end_pennies"
+    t.integer "end_nickels"
+    t.integer "end_dimes"
+    t.integer "end_quarters"
+    t.integer "end_ones"
+    t.integer "end_fives"
+    t.integer "end_tens"
+    t.integer "end_twenties"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shift_id"], name: "index_change_sheets_on_shift_id"
   end
 
   create_table "checks", force: :cascade do |t|
@@ -52,28 +75,6 @@ ActiveRecord::Schema.define(version: 20181216193837) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shift_id"], name: "index_inventory_items_on_shift_id"
-  end
-
-  create_table "inventory_lists", force: :cascade do |t|
-    t.string "item_name"
-    t.bigint "manager_configuration_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["manager_configuration_id"], name: "index_inventory_lists_on_manager_configuration_id"
-  end
-
-  create_table "manager_configurations", force: :cascade do |t|
-    t.bigint "manager_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["manager_id"], name: "index_manager_configurations_on_manager_id"
-  end
-
-  create_table "manager_settings", force: :cascade do |t|
-    t.bigint "manager_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["manager_id"], name: "index_manager_settings_on_manager_id"
   end
 
   create_table "managers", force: :cascade do |t|
@@ -118,12 +119,10 @@ ActiveRecord::Schema.define(version: 20181216193837) do
   end
 
   add_foreign_key "cash_drops", "shifts"
+  add_foreign_key "change_sheets", "shifts"
   add_foreign_key "checks", "shifts"
   add_foreign_key "employees", "managers"
   add_foreign_key "inventory_items", "shifts"
-  add_foreign_key "inventory_lists", "manager_configurations"
-  add_foreign_key "manager_configurations", "managers"
-  add_foreign_key "manager_settings", "managers"
   add_foreign_key "notes", "shifts"
   add_foreign_key "paid_outs", "shifts"
   add_foreign_key "shifts", "employees"
