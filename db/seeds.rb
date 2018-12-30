@@ -16,7 +16,7 @@ resources = %i[
   paid_out
   inventory_item
 ]
-usman = Manager.find_by(email: 'usman')
+usman = FactoryBot.create(:manager, email: 'usman@sb.com', password: '123456')
 
 100.times do
   FactoryBot.create(:employee, manager_id: usman.id)
