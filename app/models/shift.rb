@@ -1,5 +1,5 @@
 class Shift < ApplicationRecord
-  after_create :set_inventory_items
+  after_create :set_inventory_items, :add_change_sheet
 
   belongs_to :employee
 
@@ -16,5 +16,26 @@ class Shift < ApplicationRecord
                         start_amount: 0,
                         shift_id: id).save
     end
+  end
+
+  def add_change_sheet
+    change_types = %w[
+      pennies
+      nickels
+      dimes
+      quarters
+      ones
+      fives
+      tens
+      twenties
+    ]
+    prefixes = %w[start end]
+    change_sheet = ChangeSheet.new(shift_id: id)
+    prefixes.each do |prefix|
+      change_types.each do |change_type|
+        change_sheet.send("#{prefix}_#{change_type}=", 0)
+      end
+    end
+    change_sheet.save
   end
 end
