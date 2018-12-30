@@ -16,4 +16,10 @@ class ShiftTest < ActiveSupport::TestCase
     assert_equal tracked_item.name, item.name
     assert_equal 0, item.start_amount
   end
+
+  test 'should create change sheet after creation' do
+    shift = create :shift
+
+    assert shift.change_sheet
+  end
 end
