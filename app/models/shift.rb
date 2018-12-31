@@ -1,5 +1,6 @@
 class Shift < ApplicationRecord
   after_create :set_inventory_items, :add_change_sheet
+  default_scope { order(created_at: :desc) }
 
   belongs_to :employee
 
