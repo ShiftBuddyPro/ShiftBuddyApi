@@ -22,6 +22,7 @@ class Api::V1::Managers::TrackedItemsController < ApplicationController
   # DELETE /tracked_items/1
   def destroy
     @tracked_item.destroy
+    render json: @tracked_item
   end
 
 private
