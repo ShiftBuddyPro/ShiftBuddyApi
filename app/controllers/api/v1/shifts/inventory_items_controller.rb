@@ -1,4 +1,4 @@
-class Api::V1::Managers::Employees::Shifts::InventoryItemsController < Api::EmployeeApplicationController
+class Api::V1::Shifts::InventoryItemsController < ApplicationController
   def index
     inventory_items = shift.inventory_items
     render json: inventory_items.all
