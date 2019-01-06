@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :employees
       resources :shifts, except: %i[create] do
+        resources :cash_drops, only: %i[index]
+        resources :checks, only: %i[index]
+        resources :inventory_items, only: %i[index]
+        resources :notes, only: %i[index]
+        resources :paid_outs, only: %i[index]
         resource :change_sheet, only: %i[update show]
       end
       resources :cash_drops, except: %i[create]
