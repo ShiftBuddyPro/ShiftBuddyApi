@@ -24,6 +24,7 @@ gem 'jwt'
 gem 'dotenv'
 gem 'simple_command'
 gem 'factory_bot_rails'
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
