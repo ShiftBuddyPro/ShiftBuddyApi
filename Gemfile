@@ -23,6 +23,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'dotenv'
 gem 'simple_command'
+gem 'factory_bot_rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
