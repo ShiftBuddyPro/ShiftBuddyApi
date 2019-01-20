@@ -38,3 +38,5 @@ shift-admin/.env.production.local
 shift-admin/npm-debug.log*
 shift-admin/yarn-debug.log*
 shift-admin/yarn-error.log*
+
+.DS_Store
