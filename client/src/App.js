@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SiteNavbar from "./components/utilities/SiteNavbar";
 import Landing from "./components/public/Landing";
 import Login from "./components/public/Login";
@@ -30,13 +30,23 @@ class App extends Component {
         <Router>
           <div>
             <SiteNavbar />
-            <Route path="/" exact component={Landing} />
-            <Route path="/login/" component={Login} />
-            <Route path="/dashboard/" component={Dashboard} />
-            <Route path="/employees/" component={Employees} />
-            <Route path="/shifts/" component={Shifts} />
-            <Route path="/employee/" component={Employee} />
-            <Route path="/employeesnew/" component={EmployeesNew} />
+            <Switch>
+              <Route exact path="/" exact component={Landing} />
+            </Switch>
+            <Switch>
+              <Route exact path="/dashboard/" component={Dashboard} />
+            </Switch>
+            <Route exact path="/login/" component={Login} />
+            <Switch>
+              <Route exact path="/shifts/" component={Shifts} />
+            </Switch>
+            <Switch>
+              <Route exact path="/employee/" component={Employee} />
+            </Switch>
+            <Route exact path="/employees/" component={Employees} />
+            <Switch />
+            <Route exact path="/employeesnew/" component={EmployeesNew} />
+            <Switch />
           </div>
         </Router>
       </div>
