@@ -20,23 +20,21 @@ export default class Shifts extends Component {
     return this.state.shifts.map(shift => {
       console.log(shift);
       return (
-        <Row className="list-view-item" key={shift.id}>
-          <Col>
+        <div className="flex-1 list-view-item w-35 ">
+          <div className="" key={shift.id}>
             <div>{shift.attributes.employee_name}</div>
             <div>{shift.attributes.date}</div>
-          </Col>
+          </div>
 
-          <Col>
             <button
-              className="float-right basic-button shadow orange mt-half"
+              className="float-right basic-button shadow orange"
               onClick={() => {
                 this.handleShiftClick(shift.id);
               }}
             >
               View
             </button>
-          </Col>
-        </Row>
+        </div>
       );
     });
   }

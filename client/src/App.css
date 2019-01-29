@@ -88,6 +88,10 @@ html a:hover {
   padding: 1rem;
 }
 
+.w-75 {
+  width: 75%;
+}
+
 .small-error-text {
   font-size: 0.8rem;
   font-style: italic;
@@ -142,7 +146,7 @@ html a:hover {
   color: white;
   font-weight: bold;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.26);
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 .plus-button:hover {
