@@ -5,7 +5,6 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Column, Container, Row } from "reactstrap";
 
 axios.defaults.baseURL = "http://www.shiftbuddypro.com";
 

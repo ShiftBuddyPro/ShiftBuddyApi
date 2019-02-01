@@ -37,17 +37,21 @@ class SiteNavbar extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/employees/">Employees</NavLink>
+              <NavLink href="/employees">Employees</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/shifts/">Shifts</NavLink>
+              <NavLink href="/shifts">Shifts</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Account
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Settings</DropdownItem>
+                <DropdownItem
+                  onClick={() => this.props.history.push("/settings")}
+                >
+                  Settings
+                </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem
                   onClick={() => {

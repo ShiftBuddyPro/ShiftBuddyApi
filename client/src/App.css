@@ -20,6 +20,16 @@ html a:hover {
   text-decoration: none;
   color: white;
 }
+
+.italic {
+  font-style: italic;
+}
+
+.text-small {
+  font-size: .8rem;
+}
+
+
 .card {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -68,11 +78,15 @@ html a:hover {
   float: right;
 }
 
+.mr-1rem {
+  margin-right: 1rem;
+}
+
 .mb-1rem {
   margin-bottom: 1rem;
 }
 
-.mb-2 {
+.mb-2rem {
   margin-bottom: 2rem;
 }
 
