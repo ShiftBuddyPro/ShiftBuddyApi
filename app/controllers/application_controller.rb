@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::API
   before_action :cors_preflight_check
   after_action :cors_set_access_control_headers
-
-# For all responses in this controller, return the CORS access control headers.
+  include ActionController::MimeResponds
 
   def fallback_index_html
-    render :file => 'public/index.html'
+    respond_to do |format|
+      format.html { render body: Rails.root.join('public/index.html').read }
+    end
   end
 
   def cors_set_access_control_headers
