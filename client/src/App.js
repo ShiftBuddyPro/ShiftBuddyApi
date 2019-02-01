@@ -31,21 +31,21 @@ class App extends Component {
           <div>
             <SiteNavbar />
             <Switch>
-              <Route exact path="/" exact component={Landing} />
+              <Route exact path="/" component={Landing} />
             </Switch>
             <Switch>
-              <Route exact path="/dashboard/" component={Dashboard} />
+              <Route exact path="/dashboard" component={Dashboard} />
             </Switch>
-            <Route exact path="/login/" component={Login} />
+            <Route exact path="/login" component={Login} />
             <Switch>
-              <Route exact path="/shifts/" component={Shifts} />
+              <Route exact path="/shifts" component={Shifts} />
             </Switch>
             <Switch>
-              <Route exact path="/employee/" component={Employee} />
+              <Route exact path="/employee" component={Employee} />
             </Switch>
-            <Route exact path="/employees/" component={Employees} />
+            <Route exact path="/employees" component={Employees} />
             <Switch />
-            <Route exact path="/employeesnew/" component={EmployeesNew} />
+            <Route exact path="/employeesnew" component={EmployeesNew} />
             <Switch />
           </div>
         </Router>
