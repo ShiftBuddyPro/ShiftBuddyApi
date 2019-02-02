@@ -23,10 +23,12 @@ class Api::V1::ChangeSheetsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  focus
   test 'should update change_sheet without affecting non selected values' do
     shift.change_sheet.update(end_tens: 10)
     put "/api/v1/shifts/#{shift.id}/change_sheet", params: change_sheet_params
     assert_response :success
+    debugger
 
     assert_equal 3, shift.change_sheet.reload.start_pennies
     assert_equal 10, shift.change_sheet.end_tens

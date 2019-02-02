@@ -29,6 +29,22 @@ html a:hover {
   font-size: .8rem;
 }
 
+.flex {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.flex-1 {
+  flex: 1;
+  display: flex;
+}
+
+.flex-end {
+ margin-left: auto;
+ align-content: flex-end;
+ align-items: flex-end;
+}
 
 .card {
   /* Add shadows to create the "card" effect */
@@ -50,11 +66,12 @@ html a:hover {
 
 .list-view-item {
   border-radius: 4px;
-  color: rgb(211, 120, 9);
+  color: rgb(75, 70, 70);
+  /* color: rgb(211, 120, 9); */
   font-weight: bold;
   margin: 1rem;
   padding: 0.5rem;
-  background-color: rgb(243, 210, 161);
+  background-color: rgb(238, 234, 234);
 }
 
 .ml-auto {
@@ -118,8 +135,6 @@ html a:hover {
   border-radius: 4px;
   background-color: #b1b1b1;
   font-weight: bold;
-  margin-left: auto;
-  margin-right: auto;
   padding: 0.25rem 1rem;
   color: white;
 }
@@ -168,4 +183,12 @@ html a:hover {
   transition: 0.9s;
   cursor: pointer;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
+}
+
+.inventory-item {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: .5rem;
 }

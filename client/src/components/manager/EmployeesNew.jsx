@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import * as jwt_decode from "jwt-decode";
 import {
   Container,
   Row,
@@ -8,7 +7,6 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
   Form
 } from "reactstrap";
 

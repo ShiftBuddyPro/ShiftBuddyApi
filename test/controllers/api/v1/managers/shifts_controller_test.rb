@@ -10,14 +10,14 @@ class Api::V1::Managers::ShiftsControllerTest < ActionDispatch::IntegrationTest
     @shift2 = create :shift, employee: employee
     sign_in manager
   end
-  focus
+
   test 'should get specific managers shifts' do
     get "/api/v1/managers/#{manager.id}/shifts"
     assert_response :success
     assert_json(@response.body) do
       has :data do
         item 0 do
-          has :id, shift.id.to_s
+          has :id, shift2.id.to_s
           has :attributes do
             has :id, shift.id
             has :employee_name, shift.employee.name
@@ -25,9 +25,9 @@ class Api::V1::Managers::ShiftsControllerTest < ActionDispatch::IntegrationTest
           end
         end
         item 1 do
-          has :id, shift2.id.to_s
+          has :id, shift.id.to_s
           has :attributes do
-            has :id, shift2.id
+            has :id, shift.id
             has :employee_name, shift2.employee.name
             has :date
           end

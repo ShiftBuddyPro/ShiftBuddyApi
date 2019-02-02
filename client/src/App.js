@@ -8,6 +8,7 @@ import Dashboard from "./components/manager/Dashboard";
 import Employee from "./components/manager/Employee";
 import Employees from "./components/manager/Employees";
 import Shifts from "./components/manager/Shifts";
+import Shift from "./components/manager/Shift";
 import EmployeesNew from "./components/manager/EmployeesNew";
 import Settings from "./components/manager/Settings";
 import InventoryItems from "./components/manager/InventoryItems";
@@ -43,6 +44,9 @@ class App extends Component {
             </Switch>
             <Switch>
               <Route exact path="/shifts" component={Shifts} />
+            </Switch>
+            <Switch>
+              <Route exact path="/shift" component={Shift} />
             </Switch>
             <Switch>
               <Route exact path="/employee" component={Employee} />

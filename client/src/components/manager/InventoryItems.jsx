@@ -47,7 +47,33 @@ export default class InventoryItems extends Component {
     }
 
     return this.state.trackedItems.map(item => {
-      return <div key={item.id}>{item.name}</div>;
+      const deleteItem = id =>
+        axios
+          .delete(
+            `/api/v1/managers/${localStorage.getItem(
+              "manager_id"
+            )}/tracked_items/${id}`
+          )
+          .then(res => {
+            const items = [...this.state.trackedItems];
+            const newItems = items.filter(item => item.id !== id);
+            this.setState({ trackedItems: newItems });
+          })
+          .catch(err => console.log(err));
+
+      return (
+        <div className="flex list-view-item" key={item.id}>
+          <div className="flex-1">{item.name}</div>
+          <div className="flex-1">
+            <button
+              onClick={() => deleteItem(item.id)}
+              className="basic-button shadow red ml-auto"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      );
     });
   }
 
@@ -64,7 +90,6 @@ export default class InventoryItems extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <Container>
         <Row>
@@ -73,7 +98,7 @@ export default class InventoryItems extends Component {
         <Row className="mb-1rem">
           <Col md={{ size: 4, offset: 4 }}>
             <InputGroup>
-              <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+              <InputGroupAddon addonType="prepend">></InputGroupAddon>
               <Input
                 className="mr-1rem"
                 onChange={this.handleChange}

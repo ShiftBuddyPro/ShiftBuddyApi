@@ -30,7 +30,6 @@ export default class Employee extends Component {
   }
 
   render() {
-    console.log(this.state.employee);
     return <div>{this.employeeView()}</div>;
   }
 }
