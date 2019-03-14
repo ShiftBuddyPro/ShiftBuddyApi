@@ -1,58 +1,59 @@
-import React, { Component } from "react";
-import { Container, Col, Row } from "reactstrap";
-import axios from "axios";
+import React, { Component, useState, useEffect } from "react";
+import { Container, Col, Row, Spinner } from "reactstrap";
+import ManagerApi from "../../services/ManagerApi";
 
-export default class Shifts extends Component {
-  state = {
-    shifts: []
-  };
-
-  componentWillMount() {
-    axios
-      .get(`/api/v1/managers/${localStorage.getItem("manager_id")}/shifts`)
-      .then(res => {
-        this.setState({ shifts: res.data.data });
+export default props => {
+  const [loading, setLoading] = useState(true);
+  const [shifts, setShifts] = useState([]);
+  useEffect(() => {
+    ManagerApi.getShifts()
+      .then(shifts => {
+        setShifts(shifts);
+        setLoading(false);
       })
-      .catch(err => console.log(err));
-  }
+      .catch(err => setLoading(false));
+  }, []);
 
-  shiftsView() {
-    return this.state.shifts.map(shift => {
+  const renderShifts = () => {
+    const handleShiftClick = shift_id => {
+      localStorage.setItem("shift_id", shift_id);
+      props.history.push("/shift");
+    };
+    return shifts.map(shift => {
       return (
-        <div  key={shift.id} className="flex-1 list-view-item w-35 ">
+        <div key={shift.id} className="flex-1 list-view-item w-35 ">
           <div className="" key={shift.id}>
             <div>{shift.attributes.employee_name}</div>
             <div>{shift.attributes.date}</div>
           </div>
 
-            <button
-              className="float-right ml-auto basic-button shadow orange"
-              onClick={() => {
-                this.handleShiftClick(shift.id);
-              }}
-            >
-              View
-            </button>
+          <button
+            className="float-right ml-auto basic-button shadow orange"
+            onClick={() => {
+              handleShiftClick(shift.id);
+            }}
+          >
+            View
+          </button>
         </div>
       );
     });
-  }
+  };
 
-  handleShiftClick(shift_id) {
-    localStorage.setItem("shift_id", shift_id);
-    this.props.history.push("/shift");
-  }
+  const renderLoading = () => (
+    <div className="py-3 center">
+      <Spinner color="warning" />
+    </div>
+  );
 
-  render() {
-    return (
-      <Container>
-        <h1 className="text-center"> Shifts</h1>
-        <Row>
-          <Col className="card" md={{ size: 8, offset: 2 }}>
-            {this.shiftsView()}
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
+  return (
+    <Container>
+      <h1 className="text-center"> Shifts</h1>
+      <Row>
+        <Col className="card" md={{ size: 8, offset: 2 }}>
+          {loading ? renderLoading() : renderShifts()}
+        </Col>
+      </Row>
+    </Container>
+  );
+};

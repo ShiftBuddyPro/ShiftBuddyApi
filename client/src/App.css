@@ -26,7 +26,7 @@ html a:hover {
 }
 
 .text-small {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .flex {
@@ -41,9 +41,9 @@ html a:hover {
 }
 
 .flex-end {
- margin-left: auto;
- align-content: flex-end;
- align-items: flex-end;
+  margin-left: auto;
+  align-content: flex-end;
+  align-items: flex-end;
 }
 
 .card {
@@ -85,6 +85,13 @@ html a:hover {
 .center {
   margin-left: auto;
   margin-right: auto;
+}
+
+.super-center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .text-center {
@@ -190,5 +197,10 @@ html a:hover {
   border-bottom: 1px solid grey;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  padding-left: .5rem;
+  padding-left: 0.5rem;
+}
+
+.py-3 {
+  padding-bottom: 3rem;
+  padding-top: 3rem;
 }

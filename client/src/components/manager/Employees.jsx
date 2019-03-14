@@ -1,30 +1,33 @@
-import React, { Component } from "react";
-import { Container, Col, Row } from "reactstrap";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { Container, Col, Row, Spinner } from "reactstrap";
+import ManagerApi from "../../services/ManagerApi";
 
-export default class Employees extends Component {
-  state = {
-    employees: []
-  };
-
-  componentWillMount() {
-    axios
-      .get(`/api/v1/managers/${localStorage.getItem("manager_id")}/employees`)
-      .then(res => {
-        this.setState({ employees: res.data });
+export default props => {
+  const [loading, setLoading] = useState(true);
+  const [employees, setEmployees] = useState([]);
+  useEffect(() => {
+    ManagerApi.getEmployees()
+      .then(employees => {
+        setEmployees(employees);
+        setLoading(false);
       })
-      .catch(err => console.log(err));
-  }
+      .catch(err => setLoading(false));
+  }, []);
 
-  employeesView() {
-    return this.state.employees.map(employee => {
+  const renderEmployees = () => {
+    const handleEmployeeClick = employee_id => {
+      localStorage.setItem("employee_id", employee_id);
+      props.history.push("/employee");
+    };
+
+    return employees.map(employee => {
       return (
         <div className="list-view-item" key={employee.id}>
           {employee.name}
           <button
             className="float-right basic-button shadow orange"
             onClick={() => {
-              this.handleEmployeeClick(employee.id);
+              handleEmployeeClick(employee.id);
             }}
           >
             View
@@ -32,23 +35,31 @@ export default class Employees extends Component {
         </div>
       );
     });
-  }
+  };
 
-  handleEmployeeClick(employee_id) {
-    localStorage.setItem("employee_id", employee_id);
-    this.props.history.push("/employee");
-  }
+  const renderLoading = () => (
+    <div className="ml-auto mr-auto py-3 ">
+      <Spinner color="warning" />
+    </div>
+  );
 
-  render() {
-    return (
-      <Container>
-        <h1 className="text-center"> Employees <span  onClick={() => this.props.history.push('/employeesnew')} className="plus-button">+</span></h1>
-        <Row>
-          <Col className="card" md={{ size: 8, offset: 2 }}>
-            {this.employeesView()}
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
+  return (
+    <Container>
+      <h1 className="text-center">
+        {" "}
+        Employees{" "}
+        <span
+          onClick={() => props.history.push("/employeesnew")}
+          className="plus-button"
+        >
+          +
+        </span>
+      </h1>
+      <Row>
+        <Col className="card" md={{ size: 8, offset: 2 }}>
+          {loading ? renderLoading() : renderEmployees()}
+        </Col>
+      </Row>
+    </Container>
+  );
+};

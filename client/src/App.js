@@ -13,21 +13,8 @@ import EmployeesNew from "./components/manager/EmployeesNew";
 import Settings from "./components/manager/Settings";
 import InventoryItems from "./components/manager/InventoryItems";
 
-import axios from "axios";
-
 class App extends Component {
   render() {
-    (function() {
-      const token = localStorage.getItem("auth_token");
-      if (token) {
-        axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-      } else {
-        axios.defaults.headers.common["Authorization"] = null;
-        /*if setting null does not remove `Authorization` header then try
-          delete axios.defaults.headers.common['Authorization'];
-        */
-      }
-    })();
     return (
       <div className="app">
         <Router>

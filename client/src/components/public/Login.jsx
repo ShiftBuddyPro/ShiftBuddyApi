@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import * as jwt_decode from "jwt-decode";
-import {
-  Container,
-  Row,
-  Col,
-  FormGroup,
-  Label,
-  Input,
-  Form
-} from "reactstrap";
+import { Container, Row, Col, FormGroup, Label, Input, Form } from "reactstrap";
+import ManagerApi from "../../services/ManagerApi";
 
 export default class Login extends Component {
   constructor(props) {
@@ -33,14 +26,8 @@ export default class Login extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    axios
-      .post("/api/v1/managers/authenticate", this.state)
+    ManagerApi.login(this.state)
       .then(res => {
-        this.setState({ errors: false });
-        const { auth_token } = res.data;
-        localStorage.setItem("auth_token", auth_token);
-        const { manager_id } = jwt_decode(auth_token);
-        localStorage.setItem("manager_id", manager_id);
         this.props.history.push({ pathname: "/dashboard" });
       })
       .catch(err => this.setState({ errors: true }));

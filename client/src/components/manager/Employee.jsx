@@ -1,35 +1,34 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { Col, Row, Container } from "reactstrap";
+import React, { useEffect, useState } from "react";
+import { Col, Row, Container, Spinner } from "reactstrap";
+import ManagerApi from "../../services/ManagerApi";
 
-export default class Employee extends Component {
-  state = {
-    employee: ""
+export default props => {
+  const [loading, setLoading] = useState(true);
+  const [employee, setEmployee] = useState(null);
+  useEffect(() => {
+    ManagerApi.getEmployee(localStorage.getItem("employee_id"))
+      .then(employee => {
+        setEmployee(employee);
+        setLoading(false);
+      })
+      .catch(err => setLoading(false));
+  });
+
+  const renderEmployee = () => {
+    return `${employee.name} (${employee.username})`;
   };
 
-  componentDidMount() {
-    axios
-      .get(`/api/v1/employees/${localStorage.getItem("employee_id")}`)
-      .then(res => this.setState({ employee: res.data.data }))
-      .catch(err => console.log(err));
-  }
+  const renderLoading = () => <Spinner color="warning" />;
 
-  employeeView() {
-    if (this.state.employee) {
-      return (
-        <Container className="mt-6">
-          <Row>
-            <Col className="card" md={{ size: 6, offset: 3 }}>
-              {this.state.employee.attributes.name} (
-              {this.state.employee.attributes.username})
-            </Col>
-          </Row>
-        </Container>
-      );
-    }
-  }
-
-  render() {
-    return <div>{this.employeeView()}</div>;
-  }
-}
+  return (
+    <Container className="mt-6">
+      <Row>
+        <Col className="card " md={{ size: 6, offset: 3 }}>
+          <div className="ml-auto mr-auto">
+            {loading ? renderLoading() : renderEmployee()}
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
