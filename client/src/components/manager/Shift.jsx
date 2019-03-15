@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Container, Row, Col } from "reactstrap";
-import CashDrops from "./shift/CashDrops.tsx";
-import Notes from "./shift/Notes.tsx";
-import PaidOuts from "./shift/PaidOuts.tsx";
-import Inventory from "./shift/Inventory.tsx";
-import Checks from "./shift/Checks.tsx";
-import Change from "./shift/Change.tsx";
+import CashDrops from "./shift/CashDrops";
+import Notes from "./shift/Notes";
+import PaidOuts from "./shift/PaidOuts";
+import Inventory from "./shift/Inventory";
+import Checks from "./shift/Checks";
+import Change from "./shift/Change";
 
 export default props => {
   const renderSection = (name, body) => {

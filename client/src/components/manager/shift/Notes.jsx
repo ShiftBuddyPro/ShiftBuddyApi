@@ -1,20 +1,10 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Table } from "reactstrap";
 import ManagerApi from "../../../services/ManagerApi";
-import useFetch from "./useFetch.ts";
-import Fetcher from "./Fetcher.tsx";
+import Fetcher from "./Fetcher";
 
-interface Note {
-  title: string;
-  message: string;
-}
-
-interface Props {
-  shiftId: number;
-}
-
-export default (props: Props) => {
-  const renderNotes = (notes: Note[]) => (
+export default props => {
+  const renderNotes = notes => (
     <Table hover>
       <thead>
         <tr>

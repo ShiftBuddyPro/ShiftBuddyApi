@@ -8,7 +8,7 @@ import Dashboard from "./components/manager/Dashboard";
 import Employee from "./components/manager/Employee";
 import Employees from "./components/manager/Employees";
 import Shifts from "./components/manager/Shifts";
-import Shift from "./components/manager/Shift.tsx";
+import Shift from "./components/manager/Shift";
 import EmployeesNew from "./components/manager/EmployeesNew";
 import Settings from "./components/manager/Settings";
 import InventoryItems from "./components/manager/InventoryItems";

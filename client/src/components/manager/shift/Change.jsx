@@ -1,31 +1,10 @@
 import React from "react";
 import { Table } from "reactstrap";
 import ManagerApi from "../../../services/ManagerApi";
-import Fetcher from "./Fetcher.tsx";
+import Fetcher from "./Fetcher";
 
-interface Change {
-  start_pennies: number;
-  start_nickels: number;
-  start_dimes: number;
-  start_quarters: number;
-  start_ones: number;
-  start_fives: number;
-  start_tens: number;
-  start_twenties: number;
-  end_pennies: number;
-  end_nickels: number;
-  end_dimes: number;
-  end_quarters: number;
-  end_ones: number;
-  end_fives: number;
-  end_tens: number;
-  end_twenties: number;
-}
-
-interface Props {}
-
-export default (props: Props) => {
-  const renderChange = (change: Change) => {
+export default props => {
+  const renderChange = change => {
     const row = (type, start, end) => {
       return (
         <tr>

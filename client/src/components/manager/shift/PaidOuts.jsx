@@ -1,17 +1,10 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
 import ManagerApi from "../../../services/ManagerApi";
-import Fetcher from "./Fetcher.tsx";
+import Fetcher from "./Fetcher";
 
-interface PaidOut {
-  company: string;
-  amount: number;
-}
-
-interface Props {}
-
-export default (props: Props) => {
-  const renderPaidOuts = (paidOuts: PaidOut[]) => (
+export default props => {
+  const renderPaidOuts = paidOuts => (
     <Table hover>
       <thead>
         <tr>

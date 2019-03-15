@@ -1,20 +1,10 @@
 import React from "react";
 import { Table } from "reactstrap";
 import ManagerApi from "../../../services/ManagerApi";
-import Fetcher from "./Fetcher.tsx";
+import Fetcher from "./Fetcher";
 
-interface CashDrop {
-  number: number;
-  amount: number;
-}
-
-interface Props {
-  shiftId: number;
-  data?: any;
-}
-
-export default (props: Props) => {
-  const renderCashDrops = (cashDrops: CashDrop[]) => (
+export default props => {
+  const renderCashDrops = cashDrops => (
     <Table hover>
       <thead>
         <tr>

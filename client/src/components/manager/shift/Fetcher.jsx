@@ -1,14 +1,8 @@
 import React from "react";
 import { Spinner } from "reactstrap";
-import useFetch from "./useFetch.ts";
+import useFetch from "./useFetchs";
 
-interface Props {
-  api?: any;
-  noData?: string;
-  render?: (data: any) => JSX.Element | JSX.Element[];
-}
-
-export default (props: Props) => {
+export default props => {
   const { error, loading, data } = useFetch(props.api);
   if (loading) return <Spinner className="center" color="warning" />;
   if (error)

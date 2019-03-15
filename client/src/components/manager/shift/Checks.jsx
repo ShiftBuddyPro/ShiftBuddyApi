@@ -1,18 +1,10 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
 import ManagerApi from "../../../services/ManagerApi";
-import Fetcher from "./Fetcher.tsx";
+import Fetcher from "./Fetcher";
 
-interface Check {
-  number: number;
-  company: string;
-  amount: number;
-}
-
-interface Props {}
-
-export default (props: Props) => {
-  const renderChecks = (checks: Check[]) => (
+export default props => {
+  const renderChecks = checks => (
     <Table hover>
       <thead>
         <tr>

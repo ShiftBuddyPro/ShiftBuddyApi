@@ -1,18 +1,10 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
 import ManagerApi from "../../../services/ManagerApi";
-import Fetcher from "./Fetcher.tsx";
+import Fetcher from "./Fetcher";
 
-interface Item {
-  name: number;
-  start_amount: number;
-  end_amount: number | null;
-}
-
-interface Props {}
-
-export default (props: Props) => {
-  const renderInventoryItems = (items: Item[]) => (
+export default props => {
+  const renderInventoryItems = items => (
     <Table hover>
       <thead>
         <tr>
