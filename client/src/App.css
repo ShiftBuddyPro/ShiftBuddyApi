@@ -126,6 +126,15 @@ html a:hover {
   padding: 1rem;
 }
 
+.p-y-half {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.p-b-2rem {
+  padding-bottom: 2rem;
+}
+
 .w-75 {
   width: 75%;
 }
