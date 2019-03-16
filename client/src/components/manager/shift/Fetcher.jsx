@@ -1,6 +1,6 @@
 import React from "react";
 import { Spinner } from "reactstrap";
-import useFetch from "./useFetchs";
+import useFetch from "./useFetch";
 
 export default props => {
   const { error, loading, data } = useFetch(props.api);
