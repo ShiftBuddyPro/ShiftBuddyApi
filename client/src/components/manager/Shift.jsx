@@ -23,12 +23,12 @@ export default props => {
     <Container>
       <Row>
         <Col className="text-center">
-          <h1 className="p-y-half">Shift</h1>
+          <h1 className="py-1rem">Shift</h1>
         </Col>
       </Row>
       <Row>
         <Col className="card p-b-2rem" md={{ size: 5 }}>
-          <h5 className="py-half">Cash Drops</h5>
+          <h5 className="p-y-half">Cash Drops</h5>
           <CashDrops />
         </Col>
         <Col className="card p-b-2rem" md={{ size: 6, offset: 1 }}>

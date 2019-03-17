@@ -8,8 +8,8 @@ export default props => {
     <Table hover>
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Message</th>
+          <th>Company</th>
+          <th>Amount</th>
         </tr>
       </thead>
       <tbody>

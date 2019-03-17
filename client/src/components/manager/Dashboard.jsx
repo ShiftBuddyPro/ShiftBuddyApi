@@ -22,7 +22,7 @@ export default props => {
 
   return (
     <Container>
-      <h1 className="text-center mb-1rem">Activity Log </h1>
+      <h1 className="text-center py-1rem">Activity Log </h1>
       <Row>
         <Col md={{ size: 8, offset: 2 }}>
           {activities.length > 0 ? (

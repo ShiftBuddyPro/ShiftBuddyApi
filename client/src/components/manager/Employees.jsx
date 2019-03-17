@@ -45,7 +45,7 @@ export default props => {
 
   return (
     <Container>
-      <h1 className="text-center">
+      <h1 className="text-center py-1rem">
         {" "}
         Employees{" "}
         <span

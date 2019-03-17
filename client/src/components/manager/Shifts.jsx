@@ -48,7 +48,7 @@ export default props => {
 
   return (
     <Container>
-      <h1 className="text-center"> Shifts</h1>
+      <h1 className="text-center py-1rem"> Shifts</h1>
       <Row>
         <Col className="card" md={{ size: 8, offset: 2 }}>
           {loading ? renderLoading() : renderShifts()}
