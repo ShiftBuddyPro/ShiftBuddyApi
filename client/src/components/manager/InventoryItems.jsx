@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Container, Col, Row } from "reactstrap";
-import axios from "axios";
 import { InputGroup, InputGroupAddon, Input } from "reactstrap";
+import ManagerApi from "../../services/ManagerApi";
 
 export default class InventoryItems extends Component {
   constructor(props) {
@@ -16,28 +16,18 @@ export default class InventoryItems extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get(
-        `/api/v1/managers/${localStorage.getItem("manager_id")}/tracked_items`
-      )
-      .then(res => this.setState({ trackedItems: res.data }))
+    ManagerApi.getTrackedItems()
+      .then(trackedItems => this.setState({ trackedItems }))
       .catch(err => console.log(err));
   }
 
   onSubmit() {
-    axios
-      .post(
-        `api/v1/managers/${localStorage.getItem("manager_id")}/tracked_items`,
-        {
-          tracked_item: { name: this.state.name }
-        }
-      )
-      .then(res =>
+    ManagerApi.addTrackedItem(this.state.name)
+      .then(trackedItem => {
         this.setState({
-          ...this.state,
-          trackedItems: [...this.state.trackedItems, res.data]
-        })
-      )
+          trackedItems: [...this.state.trackedItems, trackedItem]
+        });
+      })
       .catch(err => console.log(err));
   }
 
@@ -47,26 +37,23 @@ export default class InventoryItems extends Component {
     }
 
     return this.state.trackedItems.map(item => {
-      const deleteItem = id =>
-        axios
-          .delete(
-            `/api/v1/managers/${localStorage.getItem(
-              "manager_id"
-            )}/tracked_items/${id}`
-          )
-          .then(res => {
-            const items = [...this.state.trackedItems];
-            const newItems = items.filter(item => item.id !== id);
-            this.setState({ trackedItems: newItems });
+      const { id, name } = item;
+      const deleteItem = () =>
+        ManagerApi.deleteTrackedItem(id)
+          .then(_ => {
+            const trackedItems = [...this.state.trackedItems].filter(
+              item => item.id !== id
+            );
+            this.setState({ trackedItems });
           })
           .catch(err => console.log(err));
 
       return (
-        <div className="flex list-view-item" key={item.id}>
-          <div className="flex-1">{item.name}</div>
+        <div className="flex list-view-item" key={id}>
+          <div className="flex-1">{name}</div>
           <div className="flex-1">
             <button
-              onClick={() => deleteItem(item.id)}
+              onClick={deleteItem}
               className="basic-button shadow red ml-auto"
             >
               Delete

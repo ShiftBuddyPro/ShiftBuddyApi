@@ -86,15 +86,12 @@ class ManagerApi {
       .catch(throwErr);
   }
 
-  async addTrackedItem(itemName) {
-    try {
-      const response = await this.api.post(`/tracked_items`, {
-        tracked_item: { name: itemName }
-      });
-      return response.data;
-    } catch (err) {
-      throw err;
-    }
+  addTrackedItem(name) {
+    return this.api
+      .post(`/tracked_items`, {
+        tracked_item: { name }
+      })
+      .then(res => res.data);
   }
 
   getTrackedItems() {
