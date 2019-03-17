@@ -11,7 +11,7 @@ export default props => {
   const renderSection = (name, body) => {
     return (
       <Row>
-        <Col className="card p-b-2rem">
+        <Col className="card p-b-2rem pl-half">
           <h5 className="p-y-half">{name}</h5>
           {body}
         </Col>
@@ -27,11 +27,11 @@ export default props => {
         </Col>
       </Row>
       <Row>
-        <Col className="card p-b-2rem" md={{ size: 5 }}>
+        <Col className="card p-b-2rem pl-half" md={{ size: 5 }}>
           <h5 className="p-y-half">Cash Drops</h5>
           <CashDrops />
         </Col>
-        <Col className="card p-b-2rem" md={{ size: 6, offset: 1 }}>
+        <Col className="card p-b-2rem pl-half" md={{ size: 6, offset: 1 }}>
           <h5 className="p-y-half">Paid Outs</h5>
           <PaidOuts />
         </Col>

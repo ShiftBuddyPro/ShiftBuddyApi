@@ -137,6 +137,10 @@ html a:hover {
   padding-bottom: 2rem;
 }
 
+.pl-half {
+  padding-left: 0.5rem
+}
+
 .w-75 {
   width: 75%;
 }
