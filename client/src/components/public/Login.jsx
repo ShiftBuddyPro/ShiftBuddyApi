@@ -11,6 +11,7 @@ export default props => {
   }, []);
 
   const handleSubmit = event => {
+    event.preventDefault();
     ManagerApi.login(fields)
       .then(res => {
         props.history.push({ pathname: "/dashboard" });
