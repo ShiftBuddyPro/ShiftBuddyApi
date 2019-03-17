@@ -39,4 +39,8 @@ class Shift < ApplicationRecord
     end
     change_sheet.save
   end
+
+  def recent_activities
+    (notes + paid_outs + checks).sort_by(&:created_at).reverse!.map(&:to_activity)
+  end
 end
