@@ -127,8 +127,13 @@ html a:hover {
 }
 
 .p-y-half {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-1rem {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .p-b-2rem {

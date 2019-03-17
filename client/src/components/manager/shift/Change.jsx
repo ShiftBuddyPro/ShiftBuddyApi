@@ -48,10 +48,3 @@ export default props => {
     />
   );
 };
-
-const red = {
-  id: 56,
-  shift_id: 216,
-  created_at: "2019-01-11T05:38:02.487Z",
-  updated_at: "2019-01-11T05:38:02.487Z"
-};

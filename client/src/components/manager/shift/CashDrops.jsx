@@ -16,7 +16,7 @@ export default props => {
         {cashDrops.map(cashDrop => (
           <tr>
             <th scope="row">{cashDrop.number}</th>
-            <td>{cashDrop.amount}</td>
+            <td>{cashDrop.amount.toFixed(2)}</td>
           </tr>
         ))}
       </tbody>

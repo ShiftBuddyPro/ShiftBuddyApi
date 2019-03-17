@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Table } from "reactstrap";
 import ManagerApi from "../../../services/ManagerApi";
 import Fetcher from "./Fetcher";
@@ -16,7 +16,7 @@ export default props => {
         {paidOuts.map(paidOut => (
           <tr>
             <th scope="row">{paidOut.company}</th>
-            <td>{paidOut.amount}</td>
+            <td>{paidOut.amount.toFixed(2)}</td>
           </tr>
         ))}
       </tbody>

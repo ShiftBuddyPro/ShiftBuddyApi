@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Container, Row, Col, Table } from "reactstrap";
+import React from "react";
+import { Table } from "reactstrap";
 import ManagerApi from "../../../services/ManagerApi";
 import Fetcher from "./Fetcher";
 

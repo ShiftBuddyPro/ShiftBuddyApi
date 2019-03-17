@@ -8,7 +8,7 @@ export default props => {
     ManagerApi.getActivityLogs()
       .then(activities => setActivities(activities))
       .catch(err => console.log(err));
-  });
+  }, []);
 
   const renderActivities = () => {
     return activities.map(activity => {

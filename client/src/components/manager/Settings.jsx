@@ -10,7 +10,7 @@ export default class Settings extends Component {
           <h1 className="center">Settings</h1>
         </Row>
         <Row>
-          <Col md={{ size: 6, offset: 3 }} className="card p-1">
+          <Col md={{ size: 6, offset: 3 }} className="card py-1rem">
             <Link className="center" to="/inventory-items">
               <button className="basic-button shadow orange">
                 Inventory Items

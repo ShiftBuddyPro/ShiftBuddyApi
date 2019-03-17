@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Col, Row, Spinner } from "reactstrap";
 import ManagerApi from "../../services/ManagerApi";
 
