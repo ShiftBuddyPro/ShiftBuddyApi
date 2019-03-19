@@ -1,32 +1,26 @@
 import React from "react";
-import { Table } from "reactstrap";
+import * as UI from "../../ui";
 import ManagerApi from "../../../services/ManagerApi";
 import Fetcher from "./Fetcher";
 
 export default props => {
   const renderCashDrops = cashDrops => (
-    <Table hover>
-      <thead>
+    <UI.Table
+      headers={["Number", "Amount"]}
+      data={cashDrops}
+      renderRow={cashDrop => (
         <tr>
-          <th>Number</th>
-          <th>Amount</th>
+          <th scope="row">{cashDrop.number}</th>
+          <td>{cashDrop.amount.toFixed(2)}</td>
         </tr>
-      </thead>
-      <tbody>
-        {cashDrops.map(cashDrop => (
-          <tr>
-            <th scope="row">{cashDrop.number}</th>
-            <td>{cashDrop.amount.toFixed(2)}</td>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+      )}
+    />
   );
   const shiftId = localStorage.getItem("shift_id");
 
   return (
     <Fetcher
-      render={cashDrops => renderCashDrops(cashDrops)}
+      render={renderCashDrops}
       api={ManagerApi.getCashDrops(shiftId)}
       noData="No Cash Drops"
     />

@@ -10,7 +10,6 @@ export default api => {
       setLoading(true);
       try {
         const data = await api;
-        console.log(data);
         setData(data);
       } catch (e) {
         setError(e);
