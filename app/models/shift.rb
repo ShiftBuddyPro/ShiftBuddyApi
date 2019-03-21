@@ -21,6 +21,14 @@ class Shift < ApplicationRecord
     end
   end
 
+
+  def initialize
+    super
+    self.status = :active unless self.status
+  end
+
+  end
+
   def add_change_sheet
     change_types = %w[
       pennies

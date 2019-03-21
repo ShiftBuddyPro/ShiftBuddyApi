@@ -29,6 +29,9 @@ Rails.application.routes.draw do
             scope module: :employees do
               resources :shifts, only: %i[index create] do
                 scope module: :shifts do
+                  member do
+                    put :complete
+                  end
                   resources :cash_drops, only: %i[index create]
                   resources :checks, only: %i[index create]
                   resources :inventory_items, only: %i[index create]

@@ -16,6 +16,14 @@ class Api::V1::ShiftsController < ApplicationController
     render json: ShiftSerializer.new(@shift, options).serialized_json, status: 200, include: ['**']
   end
 
+  def complete
+    if shift.completed!
+      render status: 200
+    else
+      render status: 400
+    end
+  end
+
   # POST /shifts
   def create
     @shift = Shift.new(shift_params)
