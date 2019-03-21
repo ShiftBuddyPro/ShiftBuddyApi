@@ -15,7 +15,7 @@ export default props => {
       <tbody>
         {paidOuts.map(paidOut => (
           <tr>
-            <th scope="row">{paidOut.company}</th>
+            <td>{paidOut.company}</td>
             <td>{paidOut.amount.toFixed(2)}</td>
           </tr>
         ))}

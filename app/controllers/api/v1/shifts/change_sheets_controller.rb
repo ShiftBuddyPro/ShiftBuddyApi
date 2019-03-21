@@ -1,4 +1,4 @@
-class Api::V1::ChangeSheetsController < ApplicationController
+class Api::V1::Shifts::ChangeSheetsController < ApplicationController
   before_action :set_change_sheet, only: [:show, :update]
 
   # GET /change_sheets/1

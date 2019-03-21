@@ -4,19 +4,14 @@ import ManagerApi from "../../../services/ManagerApi";
 import Fetcher from "./Fetcher";
 
 export default props => {
+  const shiftId = localStorage.getItem("shift_id");
   const renderCashDrops = cashDrops => (
     <UI.Table
       headers={["Number", "Amount"]}
       data={cashDrops}
-      renderRow={cashDrop => (
-        <tr>
-          <th scope="row">{cashDrop.number}</th>
-          <td>{cashDrop.amount.toFixed(2)}</td>
-        </tr>
-      )}
+      rowCells={cashDrop => [cashDrop.number, `$${cashDrop.amount.toFixed(2)}`]}
     />
   );
-  const shiftId = localStorage.getItem("shift_id");
 
   return (
     <Fetcher

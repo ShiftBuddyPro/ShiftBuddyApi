@@ -1,32 +1,20 @@
 import React from "react";
-import { Table } from "reactstrap";
+import * as UI from "../../ui";
 import ManagerApi from "../../../services/ManagerApi";
 import Fetcher from "./Fetcher";
 
 export default props => {
   const renderInventoryItems = items => (
-    <Table hover>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Start</th>
-          <th>End</th>
-          <th>Used</th>
-        </tr>
-      </thead>
-      <tbody>
-        {items.map(item => (
-          <tr>
-            <th scope="row">{item.name}</th>
-            <td>{item.start_amount}</td>
-            <td>{item.end_amount || "-"}</td>
-            <td>
-              {item.end_amount ? item.end_amount - item.start_amount : "-"}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+    <UI.Table
+      headers={["Name", "Start", "End", "Used"]}
+      data={items}
+      rowCells={item => [
+        item.name,
+        item.start_amount,
+        item.end_amount || "-",
+        item.end_amount ? item.end_amount - item.start_amount : "-"
+      ]}
+    />
   );
   const shiftId = localStorage.getItem("shift_id");
   return (

@@ -3,7 +3,8 @@ import axios from "axios";
 export default class Api {
   constructor() {
     this.client = axios.create({
-      baseURL: "http://www.shiftbuddypro.com"
+      // baseURL: "http://www.shiftbuddypro.com"
+      baseURL: 'http://localhost:8000'
     });
   }
 

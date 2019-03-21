@@ -8,7 +8,7 @@ export default props => {
 
   if (error) return <div className="small-error-text">Error</div>;
 
-  if (props.noData && Array.isArray(data) && !data.length)
+  if ((props.noData && (Array.isArray(data) && !data.length)) || !data)
     return <div className="text-small italic center">{props.noData}</div>;
 
   return <>{props.render(data)}</>;
