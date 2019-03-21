@@ -11,6 +11,8 @@ class Shift < ApplicationRecord
   has_many :inventory_items
   has_one :change_sheet
 
+  enum status: %i[active completed]
+
   def set_inventory_items
     employee.manager.tracked_items.each do |item|
       InventoryItem.new(name: item.name,
