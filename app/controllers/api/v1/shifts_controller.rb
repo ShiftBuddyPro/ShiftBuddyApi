@@ -1,6 +1,6 @@
 class Api::V1::ShiftsController < ApplicationController
   attr_accessor :shift
-  before_action :set_shift, only: [:show, :update, :destroy]
+  before_action :set_shift, only: [:show, :update, :destroy, :complete]
 
   # GET /shifts
   def index
@@ -29,6 +29,7 @@ class Api::V1::ShiftsController < ApplicationController
     @shift = Shift.new(shift_params)
 
     if @shift.save
+      shift.active!
       render json: @shift,
              status: :created
     else
