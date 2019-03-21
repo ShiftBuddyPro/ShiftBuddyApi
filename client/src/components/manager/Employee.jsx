@@ -23,7 +23,7 @@ export default props => {
   return (
     <Container className="mt-6">
       <Row>
-        <Col className="card " md={{ size: 6, offset: 3 }}>
+        <Col className="card  p-y-1rem" md={{ size: 6, offset: 3 }}>
           <div className="ml-auto mr-auto">
             {loading ? renderLoading() : renderEmployee()}
           </div>
