@@ -1,6 +1,6 @@
 class Shift < ApplicationRecord
 
-  after_create :set_inventory_items, :add_change_sheet, :set_initial_status
+  after_create :set_inventory_items, :add_change_sheet
   default_scope { order(created_at: :desc) }
 
   belongs_to :employee
@@ -20,11 +20,6 @@ class Shift < ApplicationRecord
                         start_amount: 0,
                         shift_id: id).save
     end
-  end
-
-
-  def set_initial_status
-    self.active!
   end
 
 

@@ -18,9 +18,11 @@ class Api::V1::ShiftsController < ApplicationController
 
   def complete
     if shift.completed!
-      render status: 200
+      render json: shift,
+             status: :created
     else
-      render status: 400
+      render json: shift,
+             status: :unprocessable_entity
     end
   end
 
