@@ -18,7 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://www.shiftbuddypro.com",
+  "proxy": "https://www.shiftbuddypro.com",
   "eslintConfig": {
     "extends": "react-app"
   },
