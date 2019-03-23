@@ -17,6 +17,7 @@ class Api::V1::ShiftsController < ApplicationController
   end
 
   def complete
+    shift.employee.
     if shift.completed!
       render json: shift,
              status: :created
@@ -28,10 +29,9 @@ class Api::V1::ShiftsController < ApplicationController
 
   # POST /shifts
   def create
-    @shift = Shift.new(shift_params)
+    @shift = Shift.new(shift_params.merge(status: :active))
 
     if @shift.save
-      shift.active!
       render json: @shift,
              status: :created
     else

@@ -19,8 +19,6 @@ class Employee < ApplicationRecord
   end
 
   def current_shift
-    return if shifts.empty?
-
     shifts.first
   end
 end
