@@ -17,7 +17,6 @@ class Api::V1::ShiftsController < ApplicationController
   end
 
   def complete
-    shift.employee.
     if shift.completed!
       render json: shift,
              status: :created
