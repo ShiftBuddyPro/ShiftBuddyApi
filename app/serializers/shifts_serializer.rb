@@ -5,7 +5,9 @@ class ShiftsSerializer < ApplicationSerializer
     shift.employee.name
   end
 
-  attribute :date do |shift|
-    shift.created_at.to_formatted_s(:long_ordinal)
+  attribute :employee_id do |shift|
+    shift.employee.id
   end
+
+  attribute :created_at
 end
