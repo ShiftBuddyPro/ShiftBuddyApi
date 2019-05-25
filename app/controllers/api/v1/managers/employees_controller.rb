@@ -1,31 +1,39 @@
 class Api::V1::Managers::EmployeesController < Api::EmployeeApplicationController
-  before_action -> { render_unauthorized && return unless current_user_is? manager }
+  before_action lambda {
+                  render_unauthorized && return unless current_user_is? manager
+                }
 
   # GET /manager/employees
   # Available to manager only
   def index
-    employees = manager.employees
-    render json: employees.all,
-           each_serializer: EmployeeSerializer,
-           status: 200
+    employees = manager.employees.active
+    render json: employees.all, each_serializer: EmployeeSerializer, status: 200
   end
 
   # POST /manager/:manager_id/employees
   # Available to manager only
   def create
-    @employee = Employee.new(employee_params)
+    @employee =
+      Employee.new(employee_params.merge({ manager_id: params[:manager_id] }))
 
     if @employee.save
+      @employee.active!
       render json: @employee, status: :created
     else
       render json: @employee.errors, status: :unprocessable_entity
     end
   end
 
-private
+  private
 
   def employee_params
-    params.require(:employee).permit(:name, :manager_id, :username, :password, :password_confirmation)
+    params.require(:employee).permit(
+      :name,
+      :manager_id,
+      :username,
+      :password,
+      :password_confirmation
+    )
   end
 
   def manager

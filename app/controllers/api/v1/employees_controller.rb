@@ -1,11 +1,10 @@
 class Api::V1::EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :update, :destroy]
+  before_action :set_employee, only: %i[show update destroy]
   attr_accessor :employee
 
   # GET /employees
   def index
-    render json: Employee.all,
-           each_serializer: EmployeeSerializer
+    render json: Employee.all, each_serializer: EmployeeSerializer
   end
 
   # GET /employees/1
@@ -18,17 +17,16 @@ class Api::V1::EmployeesController < ApplicationController
     if employee.update(employee_params)
       render json: employee
     else
-      render json: employee.errors,
-             status: :unprocessable_entity
+      render json: employee.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /employees/1
   def destroy
-    @employee.destroy
+    @employee.removed!
   end
 
-private
+  private
 
   def set_employee
     @employee = Employee.find(params[:id])

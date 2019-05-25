@@ -6,11 +6,7 @@ class Employee < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
 
-  enum status: %i[not_working working]
-
-  def status
-    working? ? :working : :not_working
-  end
+  enum status: %i[active removed]
 
   def working?
     return false if shifts.empty?
