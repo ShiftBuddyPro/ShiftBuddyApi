@@ -13,7 +13,7 @@ class Api::V1::ShiftsController < ApplicationController
   def show
     options = {}
     options[:include] = %i[paid_outs checks notes cash_drops inventory_items change_sheet]
-    render json: ShiftSerializer.new(@shift, options).serialized_json, status: 200, include: ['**']
+    render json: ShiftSerializer.new(@shift, options).serialized_json, status: 200
   end
 
   def complete

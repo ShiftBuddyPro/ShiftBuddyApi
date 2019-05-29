@@ -31,14 +31,9 @@ class Api::V1::ShiftsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-private
+  private
 
   def shift_params
-    {
-      shift: {
-        employee_id: employee.id
-
-      }
-    }
+    { shift: { employee_id: employee.id } }
   end
 end
