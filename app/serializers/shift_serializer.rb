@@ -1,5 +1,6 @@
 class ShiftSerializer < ApplicationSerializer
   attribute :id
+  attribute :created_at
 
   has_many :notes
   has_many :checks
@@ -7,5 +8,4 @@ class ShiftSerializer < ApplicationSerializer
   has_many :paid_outs
   has_many :inventory_items
   has_one :change_sheet
-
 end
