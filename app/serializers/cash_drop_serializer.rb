@@ -1,4 +1,4 @@
 class CashDropSerializer < ApplicationSerializer
-  attributes :amount, :number
+  attributes :amount, :number, :created_at
 
 end
