@@ -1,6 +1,8 @@
 class ShiftSerializer < ApplicationSerializer
   attribute :id
   attribute :created_at
+  attribute :completed_at
+  attribute :status
 
   attribute :employee_id do |shift|
     shift.employee.id
