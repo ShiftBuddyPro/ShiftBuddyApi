@@ -21,6 +21,7 @@ class Shift < ApplicationRecord
 
   def completed!
     super
+    update(completed_at: Time.now)
   end
 
   def add_change_sheet
