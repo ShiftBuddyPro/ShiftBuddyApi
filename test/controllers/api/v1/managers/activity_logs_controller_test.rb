@@ -13,17 +13,18 @@ class Api::V1::Managers::ActivityLogsControllerTest < ActionDispatch::Integratio
     @note2 = create :note, shift: shift2
     @paid_out = create :paid_out, shift: shift2
     @check = create :check, created_at: Time.now + 1.minute, shift: shift2
+    @cash_drop = create :cash_drop, created_at: 2.hours.ago, shift: shift
   end
 
-  focus
   test "should show manager's activities" do
     get "/api/v1/managers/#{manager.id}/activity_logs"
     assert_response :success
     activities = JSON.parse(response.body)
-    assert_equal 4, activities.length
+    assert_equal 5, activities.length
     assert activities.first.include? 'check'
     assert activities.second.include? 'paid out'
     assert activities.third.include? 'note'
     assert activities.fourth.include? 'note'
+    assert activities.fifth.include? 'cash drop'
   end
 end
