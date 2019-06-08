@@ -9,7 +9,7 @@ class Api::V1::ManagersController < ApplicationController
 
   # GET /managers/1
   def show
-    render json: @manager
+    render json: serialized_manager, response: 200
   end
 
   # POST /managers
@@ -52,5 +52,11 @@ class Api::V1::ManagersController < ApplicationController
       :password,
       :password_confirmation
     )
+  end
+
+  def serialized_manager()
+    options = {}
+    options[:include] = %i[business]
+    ManagerSerializer.new(@manager, options).serialized_json
   end
 end
