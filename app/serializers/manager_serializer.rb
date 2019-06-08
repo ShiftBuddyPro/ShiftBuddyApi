@@ -1,6 +1,6 @@
 class ManagerSerializer < ApplicationSerializer
-  include FastJsonapi::ObjectSerializer
   attribute :name
 
+  has_one :business
   has_many :employees
 end
