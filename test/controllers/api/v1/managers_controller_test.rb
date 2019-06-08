@@ -14,7 +14,6 @@ class Api::V1::ManagersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  focus
   test 'should show manager' do
     get "/api/v1/managers/#{manager.id}"
     assert_json(@response.body) do
