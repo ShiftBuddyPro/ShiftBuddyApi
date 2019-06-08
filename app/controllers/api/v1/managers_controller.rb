@@ -1,5 +1,5 @@
 class Api::V1::ManagersController < ApplicationController
-  before_action :set_manager, only: [:show, :update, :destroy]
+  before_action :set_manager, only: %i[show update destroy]
 
   # GET /managers
   def index
@@ -17,11 +17,9 @@ class Api::V1::ManagersController < ApplicationController
     @manager = Manager.new(manager_params)
 
     if @manager.save
-      render json: @manager,
-             status: :created
+      render json: @manager, status: :created
     else
-      render json: @manager.errors,
-             status: :unprocessable_entity
+      render json: @manager.errors, status: :unprocessable_entity
     end
   end
 
@@ -39,7 +37,7 @@ class Api::V1::ManagersController < ApplicationController
     @manager.destroy
   end
 
-private
+  private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_manager
@@ -48,6 +46,11 @@ private
 
   # Only allow a trusted parameter "white list" through.
   def manager_params
-    params.require(:manager).permit(:name, :email, :password, :password_confirmation)
+    params.require(:manager).permit(
+      :name,
+      :email,
+      :password,
+      :password_confirmation
+    )
   end
 end

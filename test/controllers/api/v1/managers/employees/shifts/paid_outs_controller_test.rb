@@ -9,11 +9,12 @@ class Api::V1::Managers::Employees::Shifts::PaidOutsControllerTest < ActionDispa
     @shift = create :shift, employee: employee
     @paid_out = create :paid_out, shift: shift
     sign_in employee
-
   end
 
   test 'should get shifts paid outs' do
-    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/paid_outs"
+    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{
+          shift.id
+        }/paid_outs"
     assert_response :success
     assert_json(@response.body) do
       has_only
@@ -30,12 +31,15 @@ class Api::V1::Managers::Employees::Shifts::PaidOutsControllerTest < ActionDispa
 
   test 'should create paid out' do
     assert_difference 'PaidOut.count' do
-      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/paid_outs", params: paid_out_params
+      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{
+             shift.id
+           }/paid_outs",
+           params: paid_out_params
     end
     assert_response :success
   end
 
-private
+  private
 
   def paid_out_params
     {

@@ -13,7 +13,7 @@ class Api::V1::Managers::Employees::Shifts::NotesController < Api::EmployeeAppli
     end
   end
 
-private
+  private
 
   def note_params
     params.require(:note).permit(:title, :message).merge(shift_id: shift_id)

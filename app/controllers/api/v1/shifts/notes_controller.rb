@@ -4,7 +4,7 @@ class Api::V1::Shifts::NotesController < ApplicationController
     render json: notes.all
   end
 
-private
+  private
 
   def shift_id
     @shift_id ||= params[:shift_id]

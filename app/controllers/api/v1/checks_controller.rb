@@ -1,5 +1,5 @@
 class Api::V1::ChecksController < ApplicationController
-  before_action :set_check, only: [:show, :update, :destroy]
+  before_action :set_check, only: %i[show update destroy]
   attr_accessor :check
 
   # GET /checks
@@ -17,11 +17,9 @@ class Api::V1::ChecksController < ApplicationController
     check = Check.new(check_params)
 
     if check.save
-      render json: check,
-             status: :created
+      render json: check, status: :created
     else
-      render json: check.errors,
-             status: :unprocessable_entity
+      render json: check.errors, status: :unprocessable_entity
     end
   end
 
@@ -30,8 +28,7 @@ class Api::V1::ChecksController < ApplicationController
     if check.update(check_params)
       render json: check
     else
-      render json: check.errors,
-             status: :unprocessable_entity
+      render json: check.errors, status: :unprocessable_entity
     end
   end
 
@@ -40,7 +37,7 @@ class Api::V1::ChecksController < ApplicationController
     check.destroy
   end
 
-private
+  private
 
   def set_check
     @check = Check.find(params[:id])

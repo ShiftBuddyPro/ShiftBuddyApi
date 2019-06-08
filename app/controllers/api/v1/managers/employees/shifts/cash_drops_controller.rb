@@ -13,10 +13,12 @@ class Api::V1::Managers::Employees::Shifts::CashDropsController < Api::EmployeeA
     end
   end
 
-private
+  private
 
   def cash_drop_params
-    params.require(:cash_drop).permit(:amount, :number).merge(shift_id: shift_id)
+    params.require(:cash_drop).permit(:amount, :number).merge(
+      shift_id: shift_id
+    )
   end
 
   def shift_id

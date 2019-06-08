@@ -1,5 +1,5 @@
 class Api::V1::InventoryItemsController < ApplicationController
-  before_action :set_inventory_item, only: [:show, :update, :destroy]
+  before_action :set_inventory_item, only: %i[show update destroy]
 
   # GET /inventory_items
   def index
@@ -39,13 +39,14 @@ class Api::V1::InventoryItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_inventory_item
-      @inventory_item = InventoryItem.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def inventory_item_params
-      params.require(:inventory_item).permit(:name, :start_amount, :end_amount)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_inventory_item
+    @inventory_item = InventoryItem.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def inventory_item_params
+    params.require(:inventory_item).permit(:name, :start_amount, :end_amount)
+  end
 end

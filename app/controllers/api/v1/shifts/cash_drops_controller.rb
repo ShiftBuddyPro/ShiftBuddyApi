@@ -4,7 +4,7 @@ class Api::V1::Shifts::CashDropsController < ApplicationController
     render json: cash_drops.all
   end
 
-private
+  private
 
   def shift_id
     @shift_id ||= params[:shift_id]

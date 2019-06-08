@@ -6,6 +6,8 @@ class Note < ApplicationRecord
   belongs_to :shift
 
   def to_activity
-    "#{shift.employee.name} just wrote a note: #{title ? title + ' - ' : ''}#{message}"
+    "#{shift.employee.name} just wrote a note: #{title ? title + ' - ' : ''}#{
+      message
+    }"
   end
 end

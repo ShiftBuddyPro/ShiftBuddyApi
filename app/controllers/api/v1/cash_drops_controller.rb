@@ -1,5 +1,5 @@
 class Api::V1::CashDropsController < ApplicationController
-  before_action :set_cash_drop, only: [:show, :update, :destroy]
+  before_action :set_cash_drop, only: %i[show update destroy]
 
   # GET /cash_drops
   def index
@@ -39,13 +39,14 @@ class Api::V1::CashDropsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cash_drop
-      @cash_drop = CashDrop.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def cash_drop_params
-      params.require(:cash_drop).permit(:amount, :number, :shift_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cash_drop
+    @cash_drop = CashDrop.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def cash_drop_params
+    params.require(:cash_drop).permit(:amount, :number, :shift_id)
+  end
 end

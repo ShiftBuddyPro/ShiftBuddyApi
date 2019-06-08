@@ -30,7 +30,7 @@ class Api::V1::PaidOutsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-private
+  private
 
   def paid_out_params
     {

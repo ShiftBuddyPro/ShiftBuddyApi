@@ -32,13 +32,9 @@ class Api::V1::ChangeSheetsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 10, shift.change_sheet.end_tens
   end
 
-private
+  private
 
   def change_sheet_params
-    {
-      change_sheet: {
-        start_pennies: 3
-      }
-    }
+    { change_sheet: { start_pennies: 3 } }
   end
 end

@@ -6,6 +6,8 @@ class Check < ApplicationRecord
   belongs_to :shift
 
   def to_activity
-    "#{shift.employee.name} just wrote a check to #{company} for #{number_to_currency(amount)}"
+    "#{shift.employee.name} just wrote a check to #{company} for #{
+      number_to_currency(amount)
+    }"
   end
 end

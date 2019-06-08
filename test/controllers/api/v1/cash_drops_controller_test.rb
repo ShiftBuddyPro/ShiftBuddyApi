@@ -30,15 +30,9 @@ class Api::V1::CashDropsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-private
+  private
 
   def cash_drop_params
-    {
-      cash_drop: {
-        number: 7,
-        amount: 20.00,
-        shift_id: shift.id
-      }
-    }
+    { cash_drop: { number: 7, amount: 20.00, shift_id: shift.id } }
   end
 end

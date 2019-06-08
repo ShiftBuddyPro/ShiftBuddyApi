@@ -36,10 +36,11 @@ class Api::V1::Managers::ShiftsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-private
+  private
 
   def employee_params
     password = Faker::Internet.password
+
     {
       employee: {
         name: Faker::Name.first_name,

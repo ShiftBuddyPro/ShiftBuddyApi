@@ -30,15 +30,9 @@ class Api::V1::NotesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-private
+  private
 
   def note_params
-    {
-      note: {
-        tite: 'title',
-        message: 'message',
-        shift_id: shift.id
-      }
-    }
+    { note: { tite: 'title', message: 'message', shift_id: shift.id } }
   end
 end

@@ -9,11 +9,12 @@ class Api::V1::Managers::Employees::Shifts::NotesControllerTest < ActionDispatch
     @shift = create :shift, employee: employee
     @note = create :note, shift: shift
     sign_in employee
-
   end
 
   test 'should get shifts notes' do
-    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/notes"
+    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{
+          shift.id
+        }/notes"
     assert_response :success
     assert_json(@response.body) do
       item 0 do
@@ -29,12 +30,15 @@ class Api::V1::Managers::Employees::Shifts::NotesControllerTest < ActionDispatch
 
   test 'should create cash drop' do
     assert_difference 'Note.count' do
-      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/notes", params: note_params
+      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{
+             shift.id
+           }/notes",
+           params: note_params
     end
     assert_response :success
   end
 
-private
+  private
 
   def note_params
     {

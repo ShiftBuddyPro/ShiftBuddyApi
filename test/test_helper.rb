@@ -10,7 +10,6 @@ class ActiveSupport::TestCase
 
   include FactoryBot::Syntax::Methods
   include AssertJson
-
 end
 
 class ActionDispatch::IntegrationTest
@@ -24,29 +23,32 @@ class ActionDispatch::IntegrationTest
     end
     return if token.nil?
 
-    @auth_headers = {
-      Authorization: token
-    }
+    @auth_headers = { Authorization: token }
   end
 
   def get(uri, params = {}, headers = {})
-    super uri, params: params[:params], headers: @auth_headers.present? ? @auth_headers.merge(headers) : headers
+    super uri, params: params[:params],
+    headers: @auth_headers.present? ? @auth_headers.merge(headers) : headers
   end
 
   def patch(uri, params = {}, headers = {})
-    super uri, params: params[:params], headers: @auth_headers.present? ? @auth_headers.merge(headers) : headers
+    super uri, params: params[:params],
+    headers: @auth_headers.present? ? @auth_headers.merge(headers) : headers
   end
 
   def put(uri, params = {}, headers = {})
-    super uri, params: params[:params], headers: @auth_headers.present? ? @auth_headers.merge(headers) : headers
+    super uri, params: params[:params],
+    headers: @auth_headers.present? ? @auth_headers.merge(headers) : headers
   end
 
   def post(uri, params = {}, headers = {})
-    super uri, params: params[:params], headers: @auth_headers.present? ? @auth_headers.merge(headers) : headers
+    super uri, params: params[:params],
+    headers: @auth_headers.present? ? @auth_headers.merge(headers) : headers
   end
 
   def delete(uri, params = {}, headers = {})
-    super uri, params: params[:params], headers: @auth_headers.present? ? @auth_headers.merge(headers) : headers
+    super uri, params: params[:params],
+    headers: @auth_headers.present? ? @auth_headers.merge(headers) : headers
   end
   # Add more helper methods to be used by all tests here...
 end

@@ -9,18 +9,14 @@ class Api::V1::Managers::Employees::AuthenticationControllerTest < ActionDispatc
   end
 
   test 'should authenticate employee' do
-    post '/api/v1/managers/employees/authenticate', params: authentication_params
-    assert_json(@response.body) do
-      has :auth_token
-    end
+    post '/api/v1/managers/employees/authenticate',
+         params: authentication_params
+    assert_json(@response.body) { has :auth_token }
   end
 
-private
+  private
 
   def authentication_params
-    {
-      username: employee.username,
-      password: password
-    }
+    { username: employee.username, password: password }
   end
 end

@@ -13,10 +13,12 @@ class Api::V1::Managers::Employees::Shifts::PaidOutsController < Api::EmployeeAp
     end
   end
 
-private
+  private
 
   def paid_out_params
-    params.require(:paid_out).permit(:amount, :company, :name).merge(shift_id: shift_id)
+    params.require(:paid_out).permit(:amount, :company, :name).merge(
+      shift_id: shift_id
+    )
   end
 
   def shift_id

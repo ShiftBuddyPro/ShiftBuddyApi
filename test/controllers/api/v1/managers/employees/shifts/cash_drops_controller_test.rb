@@ -12,7 +12,9 @@ class Api::V1::Managers::Employees::Shifts::CashDropsControllerTest < ActionDisp
   end
 
   test 'should get shifts cash drops' do
-    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/cash_drops"
+    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{
+          shift.id
+        }/cash_drops"
     assert_response :success
     assert_json(@response.body) do
       item 0 do
@@ -28,12 +30,15 @@ class Api::V1::Managers::Employees::Shifts::CashDropsControllerTest < ActionDisp
 
   test 'should create cash drop' do
     assert_difference 'CashDrop.count' do
-      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/cash_drops", params: cash_drop_params
+      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{
+             shift.id
+           }/cash_drops",
+           params: cash_drop_params
     end
     assert_response :success
   end
 
-private
+  private
 
   def cash_drop_params
     {

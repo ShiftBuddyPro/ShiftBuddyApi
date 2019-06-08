@@ -29,7 +29,8 @@ class Api::V1::Managers::TrackedItemsControllerTest < ActionDispatch::Integratio
 
   test 'should create tracked item for manager' do
     assert_difference('manager.tracked_items.size') do
-      post "/api/v1/managers/#{manager.id}/tracked_items", params: tracked_item_params
+      post "/api/v1/managers/#{manager.id}/tracked_items",
+           params: tracked_item_params
     end
   end
 
@@ -40,14 +41,9 @@ class Api::V1::Managers::TrackedItemsControllerTest < ActionDispatch::Integratio
     assert_response :success
   end
 
-private
+  private
 
   def tracked_item_params
-    {
-      tracked_item: {
-        name: Faker::Beer.name,
-        manager_id: manager.id
-      }
-    }
+    { tracked_item: { name: Faker::Beer.name, manager_id: manager.id } }
   end
 end

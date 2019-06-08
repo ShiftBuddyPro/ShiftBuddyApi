@@ -1,5 +1,9 @@
 class Api::V1::Managers::ShiftsController < Api::EmployeeApplicationController
-  before_action -> { render_unauthorized unless current_user_is?(manager) || current_user_is?(employee) }
+  before_action lambda {
+                  unless current_user_is?(manager) || current_user_is?(employee)
+                    render_unauthorized
+                  end
+                }
   attr_accessor :employee_id
 
   # GET /shifts
@@ -8,7 +12,7 @@ class Api::V1::Managers::ShiftsController < Api::EmployeeApplicationController
     render json: ShiftsSerializer.new(shifts.all).serialized_json
   end
 
-private
+  private
 
   def manager
     @manager ||= Manager.find params[:manager_id]

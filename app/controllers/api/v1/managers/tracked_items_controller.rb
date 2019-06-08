@@ -1,5 +1,5 @@
 class Api::V1::Managers::TrackedItemsController < ApplicationController
-  before_action :set_tracked_item, only: [:show, :update, :destroy]
+  before_action :set_tracked_item, only: %i[show update destroy]
 
   # GET /tracked_items
   def index
@@ -25,7 +25,8 @@ class Api::V1::Managers::TrackedItemsController < ApplicationController
     render json: @tracked_item
   end
 
-private
+  private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_tracked_item
     @tracked_item = TrackedItem.find(params[:id])

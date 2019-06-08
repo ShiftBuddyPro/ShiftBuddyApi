@@ -1,5 +1,5 @@
 class Api::V1::NotesController < ApplicationController
-  before_action :set_note, only: [:show, :update, :destroy]
+  before_action :set_note, only: %i[show update destroy]
 
   # GET /notes
   def index
@@ -18,11 +18,9 @@ class Api::V1::NotesController < ApplicationController
     @note = Note.new(note_params)
 
     if @note.save
-      render json: @note,
-             status: :created
+      render json: @note, status: :created
     else
-      render json: @note.errors,
-             status: :unprocessable_entity
+      render json: @note.errors, status: :unprocessable_entity
     end
   end
 
@@ -31,8 +29,7 @@ class Api::V1::NotesController < ApplicationController
     if @note.update(note_params)
       render json: @note
     else
-      render json: @note.errors,
-             status: :unprocessable_entity
+      render json: @note.errors, status: :unprocessable_entity
     end
   end
 
@@ -41,7 +38,8 @@ class Api::V1::NotesController < ApplicationController
     @note.destroy
   end
 
-private
+  private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_note
     @note = Note.find(params[:id])

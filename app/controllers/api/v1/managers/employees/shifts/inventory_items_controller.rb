@@ -13,9 +13,14 @@ class Api::V1::Managers::Employees::Shifts::InventoryItemsController < Api::Empl
     end
   end
 
-private
+  private
 
   def inventory_item_params
-    params.require(:inventory_item).permit(:start_amount, :end_amount, :name, :shift_id)
+    params.require(:inventory_item).permit(
+      :start_amount,
+      :end_amount,
+      :name,
+      :shift_id
+    )
   end
 end

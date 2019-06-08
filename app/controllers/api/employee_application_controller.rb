@@ -7,19 +7,26 @@ class Api::EmployeeApplicationController < ApplicationController
 
   def authenticate_request
     @current_employee = AuthorizeEmployeeApiRequest.call(request.headers).result
-    @current_manager = AuthorizeManagerApiRequest.call(request.headers).result unless @current_employee
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_employee || @current_manager
+    unless @current_employee
+      @current_manager = AuthorizeManagerApiRequest.call(request.headers).result
+    end
+    unless @current_employee || @current_manager
+      render json: { error: 'Not Authorized' }, status: 401
+    end
   end
 
   def current_user_is?(record)
-    record_matches_current_manager(record) || record_matches_current_employee(record)
+    record_matches_current_manager(record) ||
+      record_matches_current_employee(record)
   end
 
   def record_matches_current_manager(record)
-    record.class == Manager && current_manager && current_manager.id == record.id
+    record.class == Manager && current_manager &&
+      current_manager.id == record.id
   end
 
   def record_matches_current_employee(record)
-    record.class == Employee && current_employee && current_employee.id == record.id
+    record.class == Employee && current_employee &&
+      current_employee.id == record.id
   end
 end

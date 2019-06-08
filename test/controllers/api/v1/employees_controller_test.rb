@@ -8,7 +8,6 @@ class Api::V1::EmployeeControllerTest < ActionDispatch::IntegrationTest
     @employee = create :employee, manager: manager
   end
 
-
   test 'should show all employees' do
     get '/api/v1/employees/'
     assert_response :success
@@ -31,14 +30,9 @@ class Api::V1::EmployeeControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-private
+  private
 
   def employee_params
-    {
-      employee: {
-        name: Faker::Name.first_name,
-        manager_id: manager.id
-      }
-    }
+    { employee: { name: Faker::Name.first_name, manager_id: manager.id } }
   end
 end

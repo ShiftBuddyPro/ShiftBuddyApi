@@ -30,7 +30,7 @@ class Api::V1::ChecksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-private
+  private
 
   def check_params
     {

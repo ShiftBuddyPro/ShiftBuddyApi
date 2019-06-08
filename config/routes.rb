@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-
-  post 'api/v1/managers/authenticate', to: 'api/v1/managers/authentication#authenticate'
-  post 'api/v1/managers/employees/authenticate', to: 'api/v1/managers/employees/authentication#authenticate'
+  post 'api/v1/managers/authenticate',
+       to: 'api/v1/managers/authentication#authenticate'
+  post 'api/v1/managers/employees/authenticate',
+       to: 'api/v1/managers/employees/authentication#authenticate'
   namespace :api do
     namespace :v1 do
       resources :employees
       resources :shifts, except: %i[create] do
-        member do
-          put :complete
-        end
+        member { put :complete }
         scope module: :shifts do
           resources :cash_drops, only: %i[index]
           resources :checks, only: %i[index]
@@ -45,7 +44,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  get '*path', to: "application#fallback_index_html", constraints: ->(request) do
-    !request.xhr? && request.format.html?
-  end
+  get '*path',
+      to: 'application#fallback_index_html',
+      constraints: ->(request) { !request.xhr? && request.format.html? }
 end

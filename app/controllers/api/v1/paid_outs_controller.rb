@@ -1,5 +1,5 @@
 class Api::V1::PaidOutsController < ApplicationController
-  before_action :set_paid_out, only: [:show, :update, :destroy]
+  before_action :set_paid_out, only: %i[show update destroy]
 
   # GET /paid_outs
   def index
@@ -39,13 +39,14 @@ class Api::V1::PaidOutsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_paid_out
-      @paid_out = PaidOut.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def paid_out_params
-      params.require(:paid_out).permit(:company, :amount, :shift_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_paid_out
+    @paid_out = PaidOut.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def paid_out_params
+    params.require(:paid_out).permit(:company, :amount, :shift_id)
+  end
 end

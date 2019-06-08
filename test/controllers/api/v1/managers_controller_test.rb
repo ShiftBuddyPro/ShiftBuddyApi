@@ -3,9 +3,7 @@ require 'test_helper'
 class Api::V1::ManagersControllerTest < ActionDispatch::IntegrationTest
   attr_reader :manager
 
-  setup do
-    @manager = create :manager
-  end
+  setup { @manager = create :manager }
 
   test 'should create manager' do
     assert_changes 'Manager.count' do
@@ -30,10 +28,11 @@ class Api::V1::ManagersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-private
+  private
 
   def manager_params
     password = Faker::Internet.password
+
     {
       manager: {
         name: Faker::Name.first_name,

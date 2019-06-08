@@ -3,7 +3,7 @@ class Api::V1::Shifts::PaidOutsController < ApplicationController
     render json: Shift.find(shift_id).paid_outs
   end
 
-private
+  private
 
   def shift_id
     @shift_id ||= params[:shift_id]

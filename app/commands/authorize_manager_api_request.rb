@@ -14,7 +14,9 @@ class AuthorizeManagerApiRequest
   attr_reader :headers
 
   def manager
-    @manager ||= Manager.find(decoded_auth_token[:manager_id]) if decoded_auth_token && decoded_auth_token[:manager_id]
+    if decoded_auth_token && decoded_auth_token[:manager_id]
+      @manager ||= Manager.find(decoded_auth_token[:manager_id])
+    end
     @manager || errors.add(:token, 'Invalid token') && nil
   end
 

@@ -9,11 +9,12 @@ class Api::V1::Managers::Employees::Shifts::InventoryItemsControllerTest < Actio
     @shift = create :shift, employee: employee
     @inventory_item = create :inventory_item, shift: shift
     sign_in employee
-
   end
 
   test 'should get shifts Inventory items' do
-    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/inventory_items"
+    get "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{
+          shift.id
+        }/inventory_items"
     assert_response :success
     assert_json(@response.body) do
       item 0 do
@@ -30,12 +31,15 @@ class Api::V1::Managers::Employees::Shifts::InventoryItemsControllerTest < Actio
 
   test 'should create inventory item' do
     assert_difference 'InventoryItem.count' do
-      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{shift.id}/inventory_items", params: inventory_item_params
+      post "/api/v1/managers/#{manager.id}/employees/#{employee.id}/shifts/#{
+             shift.id
+           }/inventory_items",
+           params: inventory_item_params
     end
     assert_response :success
   end
 
-private
+  private
 
   def inventory_item_params
     {

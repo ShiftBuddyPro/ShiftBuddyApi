@@ -13,9 +13,11 @@ class Api::V1::Managers::Employees::Shifts::ChecksController < Api::EmployeeAppl
     end
   end
 
-private
+  private
 
   def check_params
-    params.require(:check).permit(:amount, :number, :company).merge(shift_id: params[:shift_id])
+    params.require(:check).permit(:amount, :number, :company).merge(
+      shift_id: params[:shift_id]
+    )
   end
 end

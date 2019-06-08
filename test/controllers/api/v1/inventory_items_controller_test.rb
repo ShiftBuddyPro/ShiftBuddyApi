@@ -19,7 +19,8 @@ class Api::V1::InventoryItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update inventory_item' do
-    put "/api/v1/inventory_items/#{inventory_item.id}", params: inventory_item_params
+    put "/api/v1/inventory_items/#{inventory_item.id}",
+        params: inventory_item_params
     assert_response :success
   end
 
@@ -30,7 +31,7 @@ class Api::V1::InventoryItemsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-private
+  private
 
   def inventory_item_params
     {

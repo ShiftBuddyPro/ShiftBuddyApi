@@ -24,9 +24,10 @@ usman = FactoryBot.create(:manager, email: 'usman', password: '123456')
   FactoryBot.create(:employee, manager_id: usman.id)
   FactoryBot.create(:shift, employee_id: usman.employees.first.id)
   (4..7).each do |i|
-    FactoryBot.create(resources[i], shift_id: usman.employees.first.shifts.first.id)
+    FactoryBot.create(
+      resources[i],
+      shift_id: usman.employees.first.shifts.first.id
+    )
   end
 end
-resources.each do |resource|
-  10.times { FactoryBot.create resource }
-end
+resources.each { |resource| 10.times { FactoryBot.create resource } }
