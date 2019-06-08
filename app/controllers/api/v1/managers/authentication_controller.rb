@@ -3,7 +3,9 @@ class Api::V1::Managers::AuthenticationController < ApplicationController
     command = authenticate_manager
 
     if command.success?
-      render(json: serialized_manager(command.result), status: 200)
+      render(
+        json: manager.as_json.merge(auth_token: command.result), status: 200
+      )
     else
       render json: { error: command.errors }, status: :unauthorized
     end
