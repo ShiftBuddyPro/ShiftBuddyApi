@@ -18,32 +18,6 @@ class Api::V1::Managers::AuthenticationControllerTest < ActionDispatch::Integrat
       has :created_at
       has :auth_token
     end
-    # assert_json(@response.body) do
-    #   has :data do
-    #     has :id, manager.id.to_s
-    #     has :type, 'manager'
-    #     has :attributes do
-    #       has :name, manager.name
-    #     end
-    #   end
-    #   has :included do
-    #     has_length_of 1
-    #     item 0 do
-    #       has :id, business.id.to_s
-    #       has :type, 'business'
-    #       has :attributes do
-    #         has :name, business.name
-    #         has :address1, business.address1
-    #         has :city, business.city
-    #         has :state, business.state
-    #         has :zip_code, business.zip_code
-    #       end
-    #     end
-    #   end
-    #   has :meta do
-    #     has :auth_token
-    #   end
-    # end
   end
 
   private
