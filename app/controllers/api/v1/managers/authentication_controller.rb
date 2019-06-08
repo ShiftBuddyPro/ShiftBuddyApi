@@ -17,13 +17,6 @@ class Api::V1::Managers::AuthenticationController < ApplicationController
     @manager ||= Manager.find_by(email: params[:email])
   end
 
-  def serialized_manager(auth_token)
-    options = {}
-    options[:meta] = { auth_token: auth_token }
-    options[:include] = %i[business]
-    ManagerSerializer.new(manager, options).serialized_json
-  end
-
   def authenticate_manager
     AuthenticateManager.call(params[:email], params[:password])
   end
