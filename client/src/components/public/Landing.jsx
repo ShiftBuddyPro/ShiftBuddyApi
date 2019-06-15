@@ -17,6 +17,9 @@ export default props => {
           <button className="basic-button shadow orange" href="/login">
             <Link to="/login">Login</Link>
           </button>
+          <button className="basic-button shadow blue" href="/login">
+            <Link to="/contact">Contact</Link>
+          </button>
         </p>
       </Jumbotron>
       <footer

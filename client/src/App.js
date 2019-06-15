@@ -12,7 +12,8 @@ import Shift from "./components/manager/Shift";
 import EmployeesNew from "./components/manager/EmployeesNew";
 import Settings from "./components/manager/Settings";
 import InventoryItems from "./components/manager/InventoryItems";
-import PrivacyPolicy from './components/public/PrivacyPolicy'
+import PrivacyPolicy from "./components/public/PrivacyPolicy";
+import Contact from "./components/public/Contact";
 
 class App extends Component {
   render() {
@@ -53,6 +54,9 @@ class App extends Component {
             </Switch>
             <Switch>
               <Route exact path="/privacy-policy" component={PrivacyPolicy} />
+            </Switch>
+            <Switch>
+              <Route exact path="/contact" component={Contact} />
             </Switch>
           </div>
         </Router>

@@ -3,7 +3,7 @@ import React from "react";
 export default props => {
   return (
     <div class="privacy-container">
-      <h1>Welcome to our Privacy Policy</h1>
+      <h1>Privacy Policy</h1>
       <h3>Your privacy is critically important to us.</h3>
       <p>
         It is ShiftBuddyPro's policy to respect your privacy regarding any
@@ -88,24 +88,6 @@ export default props => {
         privacy policies or practices of any third party sites, products or
         services.
       </p>
-      <h2>https://www.shiftbuddypro.com uses Google AdWords for remarketing</h2>
-      <p>
-        Https://www.shiftbuddypro.com uses the remarketing services to advertise
-        on third party websites (including Google) to previous visitors to our
-        site. It could mean that we advertise to previous visitors who haven't
-        completed a task on our site, for example using the contact form to make
-        an enquiry. This could be in the form of an advertisement on the Google
-        search results page, or a site in the Google Display Network.
-        Third-party vendors, including Google, use cookies to serve ads based on
-        someone's past visits. Of course, any data collected will be used in
-        accordance with our own privacy policy and Google's privacy policy.
-      </p>
-      <p>
-        You can set preferences for how Google advertises to you using the
-        Google Ad Preferences page, and if you want to you can opt out of
-        interest-based advertising entirely by cookie settings or permanently
-        using a browser plugin.
-      </p>
       <h2>Protection of Certain Personally-Identifying Information</h2>
       <p>
         ShiftBuddyPro discloses potentially personally-identifying and
@@ -148,35 +130,6 @@ export default props => {
         provide it to others. However, ShiftBuddyPro does not disclose your
         personally-identifying information.
       </p>
-      <h2>Affiliate Disclosure</h2>
-      <p>
-        This site uses affiliate links and does earn a commission from certain
-        links. This does not affect your purchases or the price you may pay.
-      </p>
-      <h2>Cookies</h2>
-      <p>
-        To enrich and perfect your online experience, ShiftBuddyPro uses
-        "Cookies", similar technologies and services provided by others to
-        display personalized content, appropriate advertising and store your
-        preferences on your computer.
-      </p>
-      <p>
-        A cookie is a string of information that a website stores on a visitor's
-        computer, and that the visitor's browser provides to the website each
-        time the visitor returns. ShiftBuddyPro uses cookies to help
-        ShiftBuddyPro identify and track visitors, their usage of
-        https://www.shiftbuddypro.com, and their website access preferences.
-        ShiftBuddyPro visitors who do not wish to have cookies placed on their
-        computers should set their browsers to refuse cookies before using
-        ShiftBuddyPro's websites, with the drawback that certain features of
-        ShiftBuddyPro's websites may not function properly without the aid of
-        cookies.
-      </p>
-      <p>
-        By continuing to navigate our website without changing your cookie
-        settings, you hereby acknowledge and agree to ShiftBuddyPro's use of
-        cookies.
-      </p>
       <h2>E-commerce</h2>
       <p>
         Those who engage in transactions with ShiftBuddyPro – by purchasing
@@ -209,7 +162,6 @@ export default props => {
         site after any change in this Privacy Policy will constitute your
         acceptance of such change.
       </p>
-      <h2 />
       <p />
       <h2>Credit & Contact Information</h2>
       <p>
