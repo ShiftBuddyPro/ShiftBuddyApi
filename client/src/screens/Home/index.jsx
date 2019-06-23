@@ -94,7 +94,7 @@ const BottomHalfContainer = styled(UI.Column)`
 
 const BadgesRow = styled(UI.Row)`
   margin-top: auto;
-  margin-top: 5rem;
+  margin-bottom: 3rem;
   align-items: center;
   justify-content: center;
 `;
@@ -102,7 +102,6 @@ const BadgesRow = styled(UI.Row)`
 const Footer = styled(UI.Row)`
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  margin-top: auto;
   background-color: ${appColors.grey.dark};
   flex-direction: row;
   justify-content: center;
