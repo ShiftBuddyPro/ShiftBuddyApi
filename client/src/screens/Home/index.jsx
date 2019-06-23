@@ -12,13 +12,17 @@ export default props => {
   return (
     <Container>
       <TopHalfContainer>
-        <Heading>Shift Buddy Pro</Heading>
+        <Heading>ShiftBuddyPro</Heading>
         <Subheading>
           Revolutionizing the way your businsess handles shifts
         </Subheading>
       </TopHalfContainer>
       <BottomHalfContainer>
-        <UI.PrimaryButton style={styles.primaryButton}>Login</UI.PrimaryButton>
+        <Link to="/login">
+          <UI.PrimaryButton style={styles.primaryButton}>
+            Login
+          </UI.PrimaryButton>
+        </Link>
         <BadgesRow>
           <AppStoreBadge height={60} />
           <PlayStoreBadge height={60} />
