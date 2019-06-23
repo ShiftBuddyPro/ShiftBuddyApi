@@ -3,7 +3,12 @@ import appColors from "constants/appColors";
 import styled from "styled-components";
 
 const PrimaryButton = props => {
-  return <Btn style={props.style}>{props.children}</Btn>;
+  const { style, children, ...remainingProps } = props;
+  return (
+    <Btn {...remainingProps} style={style}>
+      {children}
+    </Btn>
+  );
 };
 
 const Btn = styled.button`
