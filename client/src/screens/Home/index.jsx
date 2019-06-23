@@ -9,6 +9,8 @@ import * as UI from "ui";
 export default props => {
   if (localStorage.getItem("auth_token")) props.history.push("/dashboard");
 
+  const handleLoginClick = () => props.history.push("/login");
+
   return (
     <Container>
       <TopHalfContainer>
@@ -18,17 +20,25 @@ export default props => {
         </Subheading>
       </TopHalfContainer>
       <BottomHalfContainer>
-        <Link to="/login">
-          <UI.PrimaryButton style={styles.primaryButton}>
-            Login
-          </UI.PrimaryButton>
-        </Link>
+        <UI.PrimaryButton
+          onClick={handleLoginClick}
+          style={styles.primaryButton}
+        >
+          Login
+        </UI.PrimaryButton>
         <BadgesRow>
-          <AppStoreBadge height={60} />
-          <PlayStoreBadge height={60} />
+          <a href="https://apps.apple.com/us/app/shiftbuddypro/id1467445828?ign-mpt=uo%3D2">
+            <AppStoreBadge height={60} />
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.shiftbuddypro.shiftbuddymobile&hl=en_US">
+            <PlayStoreBadge height={60} />
+          </a>
         </BadgesRow>
         <Footer>
-          <PrivacyPolicyText>Privacy Policy</PrivacyPolicyText>
+          <PrivacyPolicyText to="privacy-policy">
+            Privacy Policy
+          </PrivacyPolicyText>
+          <CopyrightText>Usman Ghani 2019 © </CopyrightText>
         </Footer>
       </BottomHalfContainer>
     </Container>
@@ -91,7 +101,21 @@ const Footer = styled.div`
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: auto;
-  background-color: ${appColors.grey.light};
+  background-color: ${appColors.grey.dark};
+  flex-direction: row;
+  justify-content: center;
+  color: ${appColors.white};
+  font-size: 0.75rem;
 `;
 
-const PrivacyPolicyText = styled.a``;
+const PrivacyPolicyText = styled(Link)`
+  color: ${appColors.primary.light};
+  margin-right: auto;
+  padding-left: 5%;
+`;
+
+const CopyrightText = styled.div`
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+`;
