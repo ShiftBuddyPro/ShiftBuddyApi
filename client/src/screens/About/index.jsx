@@ -12,17 +12,26 @@ const About = props => {
         <UI.BackArrow />
         <HeaderText>About</HeaderText>
       </Header>
-      <div>
-        <IPhoneMockup width={300} type={2} />
-        <IPhoneMockup width={300} type={1} />
-        <IPhoneMockup width={300} type={3} />
-      </div>
+      <Body>
+        <div
+          style={{
+            width: "auto",
+            marginLeft: "auto",
+            marginRight: "auto"
+          }}
+        >
+          <IPhoneMockup width={300} type={2} />
+          <IPhoneMockup width={300} type={1} />
+          <IPhoneMockup width={300} type={3} />
+        </div>
+      </Body>
     </Container>
   );
 };
 
 const Container = styled(UI.Column)`
   flex: 1;
+  min-height: 100vh;
 `;
 
 const Header = styled(UI.Column)`
@@ -39,9 +48,9 @@ const HeaderText = styled.h1`
   margin-top: 0.5rem;
 `;
 
-const ImagesRow = styled(UI.Row)`
+const Body = styled(UI.Column)`
+  background-color: ${appColors.background.regular};
   flex: 1;
-  width: 100%;
 `;
 
 export default About;

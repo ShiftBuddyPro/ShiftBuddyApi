@@ -32,7 +32,7 @@ export default props => {
             <AppStoreBadge height={60} />
           </a>
           <a href="https://play.google.com/store/apps/details?id=com.shiftbuddypro.shiftbuddymobile&hl=en_US">
-            <PlayStoreBadge height={60} />
+            <PlayStoreBadge height={57.5} />
           </a>
         </BadgesRow>
         <Footer>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, FormGroup, Label, Input, Form } from "reactstrap";
+import appColors from "constants/appColors";
 import ManagerApi from "../../services/ManagerApi";
 
 export default props => {
@@ -26,7 +27,9 @@ export default props => {
   const renderErrors = () => {
     if (errors)
       return (
-        <p className="small-error-text">Invalid Email/Password combination</p>
+        <p style={{ color: appColors.darkRed, textAlign: "center" }}>
+          Invalid Email/Password combination
+        </p>
       );
   };
 
@@ -45,7 +48,11 @@ export default props => {
               <Input onChange={handleChange} type="password" name="password" />
             </FormGroup>
             {renderErrors()}
-            <button className="basic-button shadow blue" onClick={handleSubmit}>
+            <button
+              style={{ backgroundColor: appColors.primary.regular }}
+              className="basic-button shadow"
+              onClick={handleSubmit}
+            >
               Enter
             </button>
           </Form>
