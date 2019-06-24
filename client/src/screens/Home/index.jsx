@@ -10,20 +10,22 @@ export default props => {
   if (localStorage.getItem("auth_token")) props.history.push("/dashboard");
 
   const handleLoginClick = () => props.history.push("/login");
-  const handleContactClick = () => null;
+  const handleLearnMoreClick = () => props.history.push("/about");
 
   return (
     <Container>
       <TopHalfContainer>
-        <Heading>ShiftBuddyPro</Heading>
-        <Subheading>
-          Revolutionizing the way your businsess handles shifts
-        </Subheading>
+        <Header>ShiftBuddyPro</Header>
+        <Subheader>
+          Revolutionizing the way your business handles shifts
+        </Subheader>
       </TopHalfContainer>
       <BottomHalfContainer>
         <UI.Row>
+          <ContactButton onClick={handleLearnMoreClick}>
+            Learn More
+          </ContactButton>
           <LoginButton onClick={handleLoginClick}>Login</LoginButton>
-          <ContactButton onClick={handleContactClick}>Contact</ContactButton>
         </UI.Row>
         <BadgesRow>
           <a href="https://apps.apple.com/us/app/shiftbuddypro/id1467445828?ign-mpt=uo%3D2">
@@ -44,10 +46,6 @@ export default props => {
   );
 };
 
-const styles = {
-  primaryButton: {}
-};
-
 const Container = styled(UI.Column)`
   height: 100vh;
   flex: 1;
@@ -61,30 +59,31 @@ const TopHalfContainer = styled(UI.Column)`
   flex: 1;
 `;
 
-const Heading = styled.div`
+const Header = styled.div`
   color: ${appColors.white};
   text-align: center;
   vertical-align: middle;
   font-size: 3rem;
 `;
 
-const Subheading = styled.div`
+const Subheader = styled.div`
   color: ${appColors.white};
   font-size: 1.5rem;
+  text-align: center;
 `;
 
 const LoginButton = styled(UI.PrimaryButton)`
-  margin-left: auto;
-  margin-right: 0.5rem
-  margin-top: -1.5rem;
-  width: 8rem;
-`;
-
-const ContactButton = styled(UI.SecondaryButton)`
   margin-left: 0.5rem;
   margin-right: auto;
   margin-top: -1.5rem;
-  width: 8rem;
+  width: 10rem;
+`;
+
+const ContactButton = styled(UI.SecondaryButton)`
+  margin-left: auto;
+  margin-right: 0.5rem;
+  margin-top: -1.5rem;
+  width: 10rem;
 `;
 
 const BottomHalfContainer = styled(UI.Column)`

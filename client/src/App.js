@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SiteNavbar from "./components/utilities/SiteNavbar";
-import Landing from "./screens/Home";
+import Home from "./screens/Home";
+import About from "./screens/About";
+
 import Login from "./components/public/Login";
 import Dashboard from "./components/manager/Dashboard";
 import Employee from "./components/manager/Employee";
@@ -21,7 +23,10 @@ class App extends Component {
       <Router>
         <>
           <Switch>
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/" component={Home} />
+          </Switch>
+          <Switch>
+            <Route exact path="/about" component={About} />
           </Switch>
           <Switch>
             <Route exact path="/dashboard" component={Dashboard} />
