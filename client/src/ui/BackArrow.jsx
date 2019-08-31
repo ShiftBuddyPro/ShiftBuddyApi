@@ -6,12 +6,16 @@ import { withRouter } from "react-router-dom";
 import * as UI from "ui";
 
 const BackArrow = props => {
+  const onBackClick = props.route
+    ? () => props.history.push(props.route)
+    : () => props.history.goBack();
+
   return (
     <IconContainer>
       <MaterialIcon
         size={30}
         color={appColors.primary.regular}
-        onClick={() => props.history.goBack()}
+        onClick={onBackClick}
         icon="arrow_back"
       />
     </IconContainer>
