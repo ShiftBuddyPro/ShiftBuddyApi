@@ -2,11 +2,11 @@ import React from "react";
 
 export default props => {
   return (
-    <div class="privacy-container">
+    <div style={{ padding: 50 }}>
       <h1>Privacy Policy</h1>
       <h3>Your privacy is critically important to us.</h3>
       <p>
-        It is ShiftBuddyPro's policy to respect your privacy regarding any
+        It is ShiftBuddyPro's policy to respect your privacy regardng any
         information we may collect while operating our website. This Privacy
         Policy applies to{" "}
         <a style={{ color: "blue" }} href="https://www.shiftbuddypro.com">
