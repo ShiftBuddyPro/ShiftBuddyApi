@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/media/iPhoneX1.dadab286.png"
   },
   {
-    "revision": "24acd71c4db49c95992b",
+    "revision": "1ead64e14877d6fc8733",
     "url": "/static/css/main.75eb335e.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "/static/js/runtime~main.229c360f.js"
   },
   {
-    "revision": "24acd71c4db49c95992b",
-    "url": "/static/js/main.24acd71c.chunk.js"
+    "revision": "1ead64e14877d6fc8733",
+    "url": "/static/js/main.1ead64e1.chunk.js"
   },
   {
     "revision": "52f736699fcd0dd829c45b768e0c15f9",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/static/css/1.790eca2f.chunk.css"
   },
   {
-    "revision": "eac9ce02c52a0f82a57ffc4f67ea5efe",
+    "revision": "26d7ebf654c87ea3ac4aab938fbf1e63",
     "url": "/index.html"
   }
 ];
